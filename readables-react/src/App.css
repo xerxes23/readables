@@ -1,24 +1,261 @@
-.App {
-  text-align: center;
-}
+.app {
+  display: flex;
+  justify-content: center; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+/* ################ NAV ################ */
+.nav {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 5px #888888; }
+  .nav .logo {
+    margin: 10px;
+    height: 40px;
+    font-size: 30px; }
+  .nav .nav-add-button {
+    margin: 10px;
+    height: 40px; }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+/* ################ CATEGORIES ################ */
+@media only screen and (max-width: 650px) {
+  .category-wrapper {
+    flex-direction: column; }
+  .categories {
+    flex-direction: column; } }
 
-.App-intro {
-  font-size: large;
-}
+.category-wrapper {
+  min-height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column; }
+  .category-wrapper .categories {
+    display: flex;
+    justify-content: space-around;
+    width: 100%; }
+  .category-wrapper .category-title {
+    align-self: flex-start;
+    font-size: 20px;
+    margin: 10px; }
+  .category-wrapper .category-link {
+    min-width: 200px;
+    margin: 10px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 22px;
+    background: #1CD8D2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93EDC7, #1CD8D2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93EDC7, #1CD8D2);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 10px;
+    text-align: center; }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* ################ POST LIST CONTROLS ################ */
+.post-list-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .post-list-controls .post-count {
+    padding: 10px; }
+  .post-list-controls .sort-selector {
+    height: 10px;
+    margin: 10px;
+    text-align: center; }
+
+/* ################ POST LIST ################ */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+  .post-list .post-in-list {
+    border-radius: 5px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 20px 20px 20px;
+    border: 1px solid grey; }
+    .post-list .post-in-list .media {
+      display: flex; }
+      .post-list .post-in-list .media .votes {
+        width: 100px;
+        align-self: center; }
+        .post-list .post-in-list .media .votes .vote-count {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px; }
+        .post-list .post-in-list .media .votes .voting-buttons {
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+      .post-list .post-in-list .media .post-content {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: space-around; }
+        .post-list .post-in-list .media .post-content .author {
+          align-items: center;
+          padding: 5px 0 0 0; }
+        .post-list .post-in-list .media .post-content .title {
+          line-height: 30px;
+          font-size: 25px;
+          padding: 0;
+          color: #363636; }
+        .post-list .post-in-list .media .post-content .category-tag {
+          margin: 10px; }
+    .post-list .post-in-list .button-container {
+      max-width: 200px;
+      height: 100px;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      justify-content: space-around; }
+      .post-list .post-in-list .button-container .edit-button {
+        width: 120px; }
+      .post-list .post-in-list .button-container .delete-button {
+        width: 120px; }
+
+/* ################ NEW POST BUTTON AT BOTTOM OF POST LIST ################ */
+.new-post-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px; }
+  .new-post-link .post-list-add-button {
+    width: 200px; }
+
+/* ################ FOOTER ################ */
+.footer {
+  background-color: #f5f5f5;
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .footer p {
+    text-align: center; }
+  .footer .icon {
+    width: 50px;
+    height: 50px; }
+
+.git-link {
+  height: 20px;
+  width: 20px;
+  padding: 10px; }
+
+/* ################ Post Form ################ */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 550px; }
+  .form-container h1 {
+    margin: 20px; }
+  .form-container .post-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px; }
+    .form-container .post-form .form-buttons {
+      display: flex;
+      justify-content: flex-end; }
+
+/* ################ Post View ################ */
+.post-view {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 10px;
+  min-height: 400px; }
+  .post-view .votes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; }
+    .post-view .votes h1 {
+      font-size: 60px;
+      background-color: #ecf0f1;
+      padding: 10px 30px 10px 30px;
+      margin: 10px;
+      border-radius: 10px; }
+  .post-view .main-content {
+    width: 100%;
+    margin-top: 10px; }
+  .post-view .post-body {
+    background-color: #F5F5F5;
+    padding: 20px 40px 20px 40px;
+    width: 90%;
+    border-left: 5px solid grey; }
+  .post-view .meta-data {
+    display: flex; }
+    .post-view .meta-data .category-tag {
+      height: 22px;
+      margin-left: 10px; }
+    .post-view .meta-data .buttons {
+      margin-left: 10px; }
+      .post-view .meta-data .buttons .delete-button, .post-view .meta-data .buttons .edit-button {
+        font-size: 10px; }
+
+/* ################ Comment ################ */
+.comment-in-list {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px; }
+  .comment-in-list .votes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100px; }
+    .comment-in-list .votes h1 {
+      font-size: 40px;
+      background-color: #ecf0f1;
+      padding: 5px 15px 5px 15px;
+      margin: 10px;
+      border-radius: 10px; }
+  .comment-in-list .meta-data {
+    display: flex; }
+    .comment-in-list .meta-data .buttons {
+      margin-left: 10px; }
+      .comment-in-list .meta-data .buttons .delete-button, .comment-in-list .meta-data .buttons .edit-button {
+        font-size: 10px; }
+  .comment-in-list .comment-body {
+    font-size: 25px; }
+
+/* ################ Comment List ################ */
+.comment-list-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .comment-list-controls .post-count {
+    padding: 10px; }
+  .comment-list-controls .sort-selector {
+    height: 10px;
+    margin: 10px;
+    text-align: center; }
+
+.new-comment-input .post-button {
+  margin-top: 10px; }
+
+/* ################ Category Header ################ */
+.category-header {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1CD8D2;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #93EDC7, #1CD8D2);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #93EDC7, #1CD8D2);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  .category-header h1 {
+    font-size: 100px; }
