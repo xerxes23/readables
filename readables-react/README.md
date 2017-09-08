@@ -10,5 +10,5 @@ This is a nice example of the use of **[React JS](https://facebook.github.io/rea
 ## How to test it locally
 
 1. run `git clone https://github.com/xerxes23/readables.git` to clone this repository
-2. `cd readables` then run `npm install`
+2. `cd readables-react` then run `npm install`
 3. `npm start` or `yarn start` to start the app then navigate to http://localhost:3000/ on your local machine
