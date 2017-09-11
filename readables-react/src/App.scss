@@ -24,6 +24,11 @@
 
 /* ################ CATEGORIES ################ */
 @media only screen and (max-width: 650px) {
+    
+    .post-list .post-in-list {
+        flex-direction: column;
+    }
+
     .category-wrapper { 
         flex-direction: column;
     }
@@ -93,80 +98,84 @@
     flex-direction: column;
     width: 100%;
 
-    .post-in-list {
-        border-radius: 5px;
-        min-height: 120px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 20px 20px 20px 20px;
-        border: 1px solid grey;
-
-        .media {
-            display: flex;
-
-            .votes {
-                width: 100px;
-                align-self: center;
-
-                .vote-count {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 50px;
-                }
-                .voting-buttons {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-            .post-content {
-                display: flex;
-                flex-direction: column;
-                align-self: center;
-                justify-content: space-around;
-                .author {
-                    align-items: center;
-                    padding: 5px 0 0 0;  
-                };
-                .title {
-                    line-height: 30px;
-                    font-size: 25px;
-                    padding: 0;
-                    color: #363636;
-                }
-                .category-tag {
-                    margin: 10px;
-                }
-        
-            }
-            
-        
-        }
-
-        .button-container {
-            max-width: 200px;
-            height: 100px;
-            align-self: center;
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            justify-content: space-around;
-
-            .edit-button {
-                width: 120px;
-            }
-            .delete-button {
-                width: 120px;
-            }
-            
-        };
-        
-    }
    
 }
 
+
+.post-in-list {
+    border-radius: 5px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 20px 20px 20px;
+    border: 1px solid grey;
+
+    .media {
+        display: flex;
+
+        .votes {
+            width: 100px;
+            align-self: center;
+
+            .vote-count {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50px;
+            }
+            .voting-buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .post-content {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: space-around;
+            .author {
+                align-items: center;
+                padding: 5px 0 0 0;  
+            };
+            .title {
+                line-height: 30px;
+                font-size: 25px;
+                padding: 0;
+                color: #363636;
+            }
+            .category-tag {
+                margin: 10px;
+            }
+    
+        }
+        
+    
+    }
+
+    .button-container {
+        max-width: 200px;
+        height: 100px;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        justify-content: space-around;
+        
+
+        .edit-button {
+            width: 80px;
+            font-size: 12px;
+        }
+        .delete-button {
+            width: 80px;
+            font-size: 12px;
+        }
+        
+    };
+    
+}
 
 /* ################ NEW POST BUTTON AT BOTTOM OF POST LIST ################ */
 
@@ -376,4 +385,27 @@
     h1 {
         font-size: 100px;
     }
+}
+
+/* ################ Media Queries ################ */
+
+
+@media only screen and (max-width: 650px) {
+    
+    .post-list .post-in-list {
+        flex-direction: column;
+        .button-container {
+            flex-direction: row;
+            height: 22px;
+        }
+
+    }
+
+    .category-wrapper { 
+        flex-direction: column;
+    }
+    .categories {
+       flex-direction: column;
+    }
+    
 }

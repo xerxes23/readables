@@ -19,6 +19,8 @@
 
 /* ################ CATEGORIES ################ */
 @media only screen and (max-width: 650px) {
+  .post-list .post-in-list {
+    flex-direction: column; }
   .category-wrapper {
     flex-direction: column; }
   .categories {
@@ -70,55 +72,58 @@
   display: flex;
   flex-direction: column;
   width: 100%; }
-  .post-list .post-in-list {
-    border-radius: 5px;
-    min-height: 120px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 20px 20px 20px 20px;
-    border: 1px solid grey; }
-    .post-list .post-in-list .media {
-      display: flex; }
-      .post-list .post-in-list .media .votes {
-        width: 100px;
-        align-self: center; }
-        .post-list .post-in-list .media .votes .vote-count {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 50px; }
-        .post-list .post-in-list .media .votes .voting-buttons {
-          display: flex;
-          align-items: center;
-          justify-content: center; }
-      .post-list .post-in-list .media .post-content {
+
+.post-in-list {
+  border-radius: 5px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 20px 20px 20px;
+  border: 1px solid grey; }
+  .post-in-list .media {
+    display: flex; }
+    .post-in-list .media .votes {
+      width: 100px;
+      align-self: center; }
+      .post-in-list .media .votes .vote-count {
         display: flex;
-        flex-direction: column;
-        align-self: center;
-        justify-content: space-around; }
-        .post-list .post-in-list .media .post-content .author {
-          align-items: center;
-          padding: 5px 0 0 0; }
-        .post-list .post-in-list .media .post-content .title {
-          line-height: 30px;
-          font-size: 25px;
-          padding: 0;
-          color: #363636; }
-        .post-list .post-in-list .media .post-content .category-tag {
-          margin: 10px; }
-    .post-list .post-in-list .button-container {
-      max-width: 200px;
-      height: 100px;
-      align-self: center;
+        align-items: center;
+        justify-content: center;
+        height: 50px; }
+      .post-in-list .media .votes .voting-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+    .post-in-list .media .post-content {
       display: flex;
       flex-direction: column;
-      margin: 10px;
+      align-self: center;
       justify-content: space-around; }
-      .post-list .post-in-list .button-container .edit-button {
-        width: 120px; }
-      .post-list .post-in-list .button-container .delete-button {
-        width: 120px; }
+      .post-in-list .media .post-content .author {
+        align-items: center;
+        padding: 5px 0 0 0; }
+      .post-in-list .media .post-content .title {
+        line-height: 30px;
+        font-size: 25px;
+        padding: 0;
+        color: #363636; }
+      .post-in-list .media .post-content .category-tag {
+        margin: 10px; }
+  .post-in-list .button-container {
+    max-width: 200px;
+    height: 100px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: space-around; }
+    .post-in-list .button-container .edit-button {
+      width: 80px;
+      font-size: 12px; }
+    .post-in-list .button-container .delete-button {
+      width: 80px;
+      font-size: 12px; }
 
 /* ################ NEW POST BUTTON AT BOTTOM OF POST LIST ################ */
 .new-post-link {
@@ -259,3 +264,15 @@
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
   .category-header h1 {
     font-size: 100px; }
+
+/* ################ Media Queries ################ */
+@media only screen and (max-width: 650px) {
+  .post-list .post-in-list {
+    flex-direction: column; }
+    .post-list .post-in-list .button-container {
+      flex-direction: row;
+      height: 22px; }
+  .category-wrapper {
+    flex-direction: column; }
+  .categories {
+    flex-direction: column; } }

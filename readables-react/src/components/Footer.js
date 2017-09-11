@@ -1,3 +1,4 @@
+// Libs
 import React from 'react';
 import { Icon } from 'semantic-ui-react'
 
@@ -11,11 +12,14 @@ const Footer = () =>  (
             <br />
             New York, September 2017.
             
-            
+            <br />
             
             <a href="https://github.com/xerxes23"> 
-            <br />
-            <Icon className="git-link" name='github' />
+                <Icon size='big' className="git-link" name='github' />
+            </a>
+
+            <a href="https://github.com/xerxes23"> 
+                <Icon size='big' className="git-link" name='linkedin' />
             </a>
 
         </p>
@@ -25,6 +29,6 @@ const Footer = () =>  (
 
 
 
-export default Footer;
+export default Footer
 
 

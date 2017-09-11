@@ -14,10 +14,10 @@ class VoteScore extends Component {
 				</div>
 
 				<div className="voting-buttons">
-					<Button primary icon>
+					<Button compact primary icon>
 					<Icon name='thumbs outline up' />
 					</Button>
-					<Button negative icon>
+					<Button compact negative icon>
 					<Icon name='thumbs outline down' />
 					</Button> 
 				</div>

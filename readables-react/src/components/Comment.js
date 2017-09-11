@@ -1,6 +1,9 @@
+// Libs
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Icon, Label } from 'semantic-ui-react'
+
+// Components
 import VoteScore from './VoteScore'
 
 

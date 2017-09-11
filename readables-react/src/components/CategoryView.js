@@ -1,4 +1,8 @@
+// Libs
 import React, { Component } from 'react'
+
+
+// Components
 import PostList from './PostList'
 import CategoryHeader from './CategoryHeader'
 
@@ -33,4 +37,4 @@ class CategoryView extends Component {
     }
 }
 
-export default CategoryView;
+export default CategoryView

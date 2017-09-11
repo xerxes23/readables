@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+// Libs
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
+
+// Components
 import Header from './components/Header'
 import Footer from './components/Footer'
 import PostForm from './components/PostForm'
 import PostView from './components/PostView'
 import CategoryView from './components/CategoryView'
 import Home from './components/Home'
-import { Route, Switch } from 'react-router-dom'
-import './App.css';
+
+// CSS
+import './App.css'
 
 
 class App extends Component {
@@ -65,7 +70,9 @@ class App extends Component {
   }
 
   render() {
+
     const { state } = this
+
     return (
         <div>
 
@@ -99,8 +106,8 @@ class App extends Component {
 					< Footer />
 
         </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -63,11 +63,11 @@ const PostInList = (props) => (
 		</article>
 
 		<div className="button-container">
-			<Button positive className="edit-button" >
+			<Button compact positive className="edit-button" >
 				<Icon name='edit' />
 				edit
 			</Button>
-			<Button negative className="delete-button">
+			<Button compact negative className="delete-button">
 				<Icon name='trash outline' />
 				delete
 			</Button>

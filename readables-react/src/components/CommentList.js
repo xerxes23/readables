@@ -1,6 +1,9 @@
+// Libs
 import React, { Component } from 'react'
 import { Button, Icon, Select, TextArea, Form, Input } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+
+// Components
 import Comment from './Comment'
 
 const objectToArray = obj => {

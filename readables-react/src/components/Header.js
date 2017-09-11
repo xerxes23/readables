@@ -1,5 +1,6 @@
-import React from 'react';
-import { Button, Icon } from 'semantic-ui-react';
+// Libs
+import React from 'react'
+import { Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const Header = () =>  (
@@ -23,4 +24,4 @@ const Header = () =>  (
 
 
 
-export default Header;
+export default Header
