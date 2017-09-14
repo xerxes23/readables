@@ -1,10 +1,14 @@
 // Libs
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { toTitleCase } from '../utils/utils.js'
 
 class Categories extends Component {
 
     render() {
+    
+        
+        const { categories } = this.props
 
         return (
             <div className="category-wrapper">
@@ -12,17 +16,16 @@ class Categories extends Component {
                 <h3 className="category-title">Categories:</h3>
                 
                 <div className="categories">
-                    <Link to="/category" className="category-link" >
-                        React
-                    </Link>
+                    
+                    {
+                        categories.map( (category, i) => {
+                            return  <Link key={i} to={`category/${category.path}`} className="category-link" >
+                                       { toTitleCase(category.name)}
+                                    </Link>
+                        })
+                    }
+                    
 
-                    <Link to="/category" className="category-link" >
-                        Redux
-                    </Link>
-
-                    <Link to="/category" className="category-link" >
-                        Udacity
-                    </Link> 
                 </div> 
 
             </div>

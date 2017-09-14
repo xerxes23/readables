@@ -1,15 +1,11 @@
-// Libs
+
 import React, { Component } from 'react'
-import { Button, Icon, Select, TextArea, Form, Input } from 'semantic-ui-react'
+import { Button, Select, TextArea, Form, Input } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 // Components
 import Comment from './Comment'
 
-const objectToArray = obj => {
-    if (obj) return Object.keys(obj).map(key => obj[key])
-    else return []
-  }
 
 class CommentList extends Component {
 
@@ -28,8 +24,7 @@ class CommentList extends Component {
                 <div className="comment-list" >
                     
                     < Comment />
-                    < Comment />
-                    < Comment />
+                   
 
                 </div>   
 

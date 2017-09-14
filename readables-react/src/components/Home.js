@@ -6,14 +6,14 @@ import Categories from './Categories'
 class Home extends Component {
 
     render() {
-        const { posts } = this.props;
+        const { posts, categories } = this.props;
 
         return (
             <div className="" >
 
                 {/* Categories Component */}
 
-                <Categories />
+                <Categories categories={ categories } />
 
 
                 {/* Post List Component */}

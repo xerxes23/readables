@@ -3,11 +3,6 @@ import { Button, Icon, Select } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import PostInList from './PostInList'
 
-const objectToArray = obj => {
-    if (obj) return Object.keys(obj).map(key => obj[key])
-    else return []
-  }
-
 class PostList extends Component {
 
     render() {
@@ -18,13 +13,13 @@ class PostList extends Component {
             <div className="container" >
                
                 <div className="post-list-controls" >
-                    <h1 className="post-count" > { objectToArray(posts).length } Posts </h1>
+                    <h1 className="post-count" > { posts.length } Posts </h1>
                     <Select className="sort-selector" placeholder='Sort By' options={sortOptions} />
                 </div>  
 
                 <div className="post-list" >
                     
-                    { objectToArray(posts).map( (post, i) => {
+                    { posts.map( (post, i) => {
 						return <PostInList key={i} post={post} />
 					})}
 

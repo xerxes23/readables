@@ -17,21 +17,21 @@ class PostView extends Component {
                     <h1>Title to be decided</h1>
                    
                     <blockquote className="post-body" >  
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel orci rutrum, eleifend libero quis, tempor lorem. Ut vestibulum ultricies tellus, id scelerisque quam. Morbi id nunc dolor. Suspendisse risus metus, porttitor at placerat et, blandit non urna. Sed id mi odio. Etiam non justo ac tortor egestas efficitur. Donec semper suscipit condimentum. In blandit, magna vel efficitur posuere, augue velit faucibus ligula, in euismod ligula felis id tellus. Pellentesque quis tincidunt ipsum.              
+                        Lorem ipsum dolor sit semper suscipit condimentum.entesque quis tincidunt ipsum.              
                     </blockquote>
                    
                     <div className="meta-data" > 
                         
                         <h3> 
                         <Icon name='user circle outline' />
-                        Author
+                        author
                         &nbsp; · &nbsp;
                         <Icon name='clock' />
-                        <small> DATE </small>
+                        <small> 28 Jun 2016 22:21 </small>
                         &nbsp; · &nbsp;
-                        Category:
+                        <small>Category:</small>
                         <Label className="category-tag" horizontal> <a> React </a> </Label>
-                        &nbsp; · &nbsp;
+                       
                         </h3>
 
                         

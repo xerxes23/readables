@@ -12,20 +12,19 @@ class CategoryView extends Component {
 
 
     render() {
-        const objectToArray = obj => {
-            if (obj) return Object.keys(obj).map(key => obj[key])
-            else return []
-          }
-        const { posts } = this.props;
-        const filteredPosts = objectToArray(posts).filter( p => {
-            return p.category === "react"
+        const { posts, categoryPath } = this.props
+    
+        const filteredPosts = posts.filter( p => {
+            return p.category === categoryPath
         })
+
+        
         return (
             <div className="" >
 
                 {/* Category Header Component */}
 
-                <CategoryHeader />
+                <CategoryHeader categoryPath={ categoryPath }/>
 
 
                 {/* Post List Component */}
