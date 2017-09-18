@@ -14,7 +14,7 @@ class CategoryHeader extends Component {
 
         return (
             <div className="category-header" >
-
+                
                 <h1> {toTitleCase(categoryPath)} </h1>
 
             </div>

@@ -1,6 +1,9 @@
+
 // Libs
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+
+// Utils
 import { toTitleCase } from '../utils/utils.js'
 
 class Categories extends Component {
@@ -12,6 +15,7 @@ class Categories extends Component {
 
         return (
             <div className="category-wrapper">
+
         
                 <h3 className="category-title">Categories:</h3>
                 

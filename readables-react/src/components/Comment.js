@@ -10,18 +10,14 @@ import { showDate } from '../utils/utils.js'
 import VoteScore from './VoteScore'
 
 
-
-
-
-
 const Comment = (props) => (
 	<div className="comment-in-list">
-		
-			
+	
 		< VoteScore voteScore={4} />
 
-
+		
 		<div className="comment-content">	
+			
 			
 			<div className="meta-data">
 				<h4 className="data"> 

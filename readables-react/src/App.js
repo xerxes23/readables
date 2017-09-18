@@ -27,14 +27,12 @@ class App extends Component {
   componentDidMount = () => {
     
     ReadablesAPI.getAllPosts().then(data => {
-    this.setState({ posts: data })
-  })
+        this.setState({ posts: data })
+    })
 
-    ReadablesAPI.getAllCategories()
-    .then(data => {
+    ReadablesAPI.getAllCategories().then(data => {
       this.setState({ categories: data })
-  })
-
+    })
 
   }
   
@@ -51,24 +49,25 @@ class App extends Component {
           <div className="main-wrapper">
 
             {/* Navigation */}
+
             < Header / >
             
             {/* Routes */}
 
             <Switch >
               
-              <Route exact path="/" render={() => (
+              <Route exact path="/" render={({ match }) => (
                 < Home 
                   posts={ posts } 
                   categories={ categories }
                 />
               )}/>
             
-              <Route exact path="/new" render={() => (
+              <Route exact path="/new" render={({ match }) => (
                 < PostForm />
               )}/>
               
-              <Route exact path="/post" render={() => (
+              <Route exact path="/post" render={({ match }) => (
                 < PostView />
               )}/>
 
@@ -79,7 +78,6 @@ class App extends Component {
                 />
               )}/>
               
-
               <Route render={() => (
                 <NotFound/>
               )}/>
