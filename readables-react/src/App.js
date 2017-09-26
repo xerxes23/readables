@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 // Components
 import Header from './components/Header'
@@ -14,7 +15,7 @@ import NotFound from './components/NotFound'
 
 // Actions
 import { setCategories, categoriesAreLoading } from './actions/categories'
-
+import { setPosts, postsAreLoading } from './actions/posts'
 
 
 //Utils
@@ -28,7 +29,8 @@ class App extends Component {
 
   componentWillMount() {
     
-    this.props.getAllCategories()  
+    this.props.getAllCategories() 
+    this.props.getAllPosts()  
 
   }
 
@@ -109,7 +111,14 @@ function mapDispatchToProps (dispatch) {
         dispatch(categoriesAreLoading(false))
       })
     },
+    getAllPosts: () => {
+      dispatch(postsAreLoading(true))
+      ReadablesAPI.getAllPosts().then(posts => {
+        dispatch(setPosts(posts))
+        dispatch(postsAreLoading(false))
+      })
+    }
   }
 }
 
-export default (connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter((connect(mapStateToProps, mapDispatchToProps)(App)))

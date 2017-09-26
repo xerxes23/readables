@@ -3,6 +3,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Icon, Label } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+
+
+import { setPostComments } from '../actions/comments'
 
 // Utils
 import * as ReadablesAPI from '../utils/ReadablesAPI'
@@ -14,7 +19,7 @@ import VoteScore from './VoteScore'
 
 class PostInList extends Component {
 	
-	state={
+	/* state={
 		comments: [],
 	}
 
@@ -23,12 +28,29 @@ class PostInList extends Component {
 			this.setState({ comments: data })
 	  })
 	}
+ */
+
+	componentDidMount = () => {
+		this.props.setPostComments()
+	}	
 
 
 	render() {
 
 		const { voteScore, id, author, timestamp, title, category } = this.props.post
 		
+		const { comments } = this.props
+
+		let postComments = false
+		if (comments) {
+		  if (comments[id]) {
+			postComments = comments[id].filter(
+			  comment => comment.deleted === false
+			)
+		  }
+		}
+
+
 		return (
 			<div className="post-in-list">
 				
@@ -56,7 +78,7 @@ class PostInList extends Component {
 
 
 							<Icon name='comment outline' />
-							{this.state.comments.length} Comments
+							{postComments.length} Comments
 						
 						</div>
 					
@@ -80,4 +102,21 @@ class PostInList extends Component {
 	};
 }
 
-export default PostInList
+function mapStateToProps(state, props) {
+	return {
+	  comments: state.comments,
+	}
+  }
+  
+  function mapDispatchToProps(dispatch, ownProps) {
+	return {
+	  setPostComments: () => {
+		ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
+		  dispatch(setPostComments(ownProps.post.id, comments))
+		})
+	  }
+	}
+  }
+  
+
+  export default withRouter((connect(mapStateToProps, mapDispatchToProps)(PostInList)))

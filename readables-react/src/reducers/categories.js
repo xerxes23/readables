@@ -1,5 +1,5 @@
 
-import { SET_CATEGORIES, CATEGORIES_ARE_LOADING } from '../actions'
+import { SET_CATEGORIES, CATEGORIES_ARE_LOADING } from '../actions/categories'
 
 export const categories = (state = [], action) => {
     
