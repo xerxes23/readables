@@ -1,7 +1,6 @@
 // Libs
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
 // Components
@@ -113,4 +112,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default withRouter (connect(mapStateToProps, mapDispatchToProps)(App))
+export default (connect(mapStateToProps, mapDispatchToProps)(App)
