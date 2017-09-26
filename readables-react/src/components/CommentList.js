@@ -10,21 +10,31 @@ import Comment from './Comment'
 class CommentList extends Component {
 
     render() {
+    
+        const { comments } = this.props
 
         const sortOptions = [{ key: 'date', value: 'date', text: 'Date' },
         { key: 'votes', value: 'votes', text: 'Votes' }];
+
+        const commentNumber = comments? comments.length === 1? `1 comment`: `${comments.length} comments`:'loading'
+        
+       
+
         return (
             <div className="container" >
                
                 <div className="comment-list-controls" >
-                    <h1 className="comment-count" > 5 Posts </h1>
-                    <Select className="sort-selector" placeholder='Sort By' options={sortOptions} />
+                    <h1 className="comment-count" > {commentNumber} </h1>
+                    <Select compact className="sort-selector" placeholder='Sort By' options={sortOptions} />
                 </div>  
 
                 <div className="comment-list" >
                     
-                    < Comment />
-                   
+                    {
+                        comments.map( (comment, index) => ( 
+                            < Comment  key={index} comment={comment}/>
+                        ))
+                    }    
 
                 </div>   
 

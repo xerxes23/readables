@@ -1,6 +1,4 @@
 
-
-
 export const posts = (state = [], action) => {
     switch (action.type) {
       
@@ -8,3 +6,14 @@ export const posts = (state = [], action) => {
         return state
     }
 }
+
+
+
+export const postsAreLoading = (state = false, action) => {
+    switch (action.type) {
+      
+      default:
+        return state
+    }
+}
+

@@ -13,7 +13,7 @@ import VoteScore from './VoteScore'
 const Comment = (props) => (
 	<div className="comment-in-list">
 	
-		< VoteScore voteScore={4} />
+		< VoteScore voteScore={props.comment.voteScore} />
 
 		
 		<div className="comment-content">	
@@ -21,9 +21,9 @@ const Comment = (props) => (
 			
 			<div className="meta-data">
 				<h4 className="data"> 
-					Author
+					{props.comment.author}
 					&nbsp; · &nbsp;
-					<small>28 Jun 2016 22:21</small>
+					<small>{showDate(props.comment.timestamp)}</small>
 				</h4>
 				<div className="buttons">
 					<Button compact positive className="edit-button" >
@@ -35,7 +35,7 @@ const Comment = (props) => (
 				</div>
 			</div>	
 					
-			<blockquote className="comment-body">Body</blockquote> 
+			<blockquote className="comment-body">{ props.comment.body }</blockquote> 
 
 		</div>		
 		

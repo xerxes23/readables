@@ -2,19 +2,29 @@ import React, { Component } from 'react'
 import { Button, Icon, Select } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import PostInList from './PostInList'
+import { sortByDate, sortByScore } from '../utils/utils'
 
 class PostList extends Component {
 
     render() {
-        const { posts } = this.props;
+        
+
+        const { posts, sortMethod } = this.props;
+
+        sortMethod === 'date' ? posts.sort(sortByDate) : posts.sort(sortByScore)
+
+        const postNumber = posts? posts.length === 1? `1 post`: `${posts.length} posts`: 'loading'
+
         const sortOptions = [{ key: 'date', value: 'date', text: 'Date' },
         { key: 'votes', value: 'votes', text: 'Votes' }];
+
+
         return (
             <div className="container" >
                
                 <div className="post-list-controls" >
                     <h1 className="post-count" > { posts.length } Posts </h1>
-                    <Select className="sort-selector" placeholder='Sort By' options={sortOptions} />
+                    <Select compact className="sort-selector" placeholder='Sort By' options={sortOptions} />
                 </div>  
 
                 <div className="post-list" >

@@ -1,6 +1,8 @@
 // Libs
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 
 // Components
 import Header from './components/Header'
@@ -11,6 +13,11 @@ import CategoryView from './components/CategoryView'
 import Home from './components/Home'
 import NotFound from './components/NotFound'
 
+// Actions
+import { setCategories, categoriesAreLoading } from './actions/categories'
+
+
+
 //Utils
 import * as ReadablesAPI from './utils/ReadablesAPI'
 
@@ -20,28 +27,15 @@ import './App.css'
 
 class App extends Component {
 
-  state = {
-    posts: [],
-    categories: []
-  }
-  componentDidMount = () => {
+  componentWillMount() {
     
-    ReadablesAPI.getAllPosts().then(data => {
-        this.setState({ posts: data })
-    })
-
-    ReadablesAPI.getAllCategories().then(data => {
-      this.setState({ categories: data })
-    })
+    this.props.getAllCategories()  
 
   }
-  
-  
-
 
   render() {
 
-    const { posts, categories } = this.state
+    const { posts, categories } = this.props
 
     return (
         <div className="app">
@@ -67,8 +61,11 @@ class App extends Component {
                 < PostForm />
               )}/>
               
-              <Route exact path="/post" render={({ match }) => (
-                < PostView />
+              <Route exact path="/post/:id" render={({ match }) => (
+                < PostView 
+                  postId={match.params.id}
+                  posts={posts}
+                />
               )}/>
 
               <Route exact path="/category/:url"  render={({ match }) => (
@@ -95,4 +92,25 @@ class App extends Component {
   }
 }
 
-export default App
+function mapStateToProps (state, props) {
+  return {
+    categories: state.categories,
+    posts: state.posts.filter(post => post.deleted === false),
+    loadingCategories: state.categoriesAreLoading,
+    loadingPosts: state.loadingPosts
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    getAllCategories: () => {
+      dispatch(categoriesAreLoading(true))
+      ReadablesAPI.getAllCategories().then(categories => {
+        dispatch(setCategories(categories))
+        dispatch(categoriesAreLoading(false))
+      })
+    },
+  }
+}
+
+export default withRouter (connect(mapStateToProps, mapDispatchToProps)(App))

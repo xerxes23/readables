@@ -18,7 +18,7 @@ class Home extends Component {
 
                 {/* Post List Component */}
 
-                <PostList posts={posts}/>
+                <PostList sortMethod={'date'} posts={posts}/>
 
             </div>
         );

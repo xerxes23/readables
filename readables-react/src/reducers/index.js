@@ -2,13 +2,18 @@
 import { combineReducers } from 'redux'
 
 // Reducers
-import { categories } from './categories'
+import { categories, categoriesAreLoading } from './categories'
 import { comments } from './comments'
-import { posts } from './posts'
-
+import { posts, postsAreLoading } from './posts'
+import { sortMethod } from './sortMethod'
 
 export default combineReducers({
+    
     categories,
     posts,
-    comments
+    comments,
+    sortMethod,
+    postsAreLoading,
+    categoriesAreLoading
+    
 })

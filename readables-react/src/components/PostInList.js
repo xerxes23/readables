@@ -8,6 +8,7 @@ import { Button, Icon, Label } from 'semantic-ui-react'
 import * as ReadablesAPI from '../utils/ReadablesAPI'
 import { showDate } from '../utils/utils.js'
 
+
 // Components
 import VoteScore from './VoteScore'
 
@@ -18,36 +19,39 @@ class PostInList extends Component {
 	}
 
 	componentDidMount = () => {
-		ReadablesAPI.getComments(this.props.post.id).then(data => {
+		ReadablesAPI.getCommentsByPostId(this.props.post.id).then(data => {
 			this.setState({ comments: data })
 	  })
 	}
 
 
 	render() {
+
+		const { voteScore, id, author, timestamp, title, category } = this.props.post
+		
 		return (
 			<div className="post-in-list">
 				
 				<article className="media">
 					
-					< VoteScore voteScore={this.props.post.voteScore} />
+					< VoteScore voteScore={voteScore} id={id} />
 
 					<div className="post-content">
 						
 						<h3 className="author"> 
 							<Icon size='small' name='user circle outline' />
-							{this.props.post.author}
+							{author}
 							&nbsp; · &nbsp;
 							<Icon size='small' name='clock' />
-							<small>{showDate(this.props.post.timestamp)}</small>
+							<small>{showDate(timestamp)}</small>
 						</h3>
 					
-						<Link to="/post" className="title">{this.props.post.title}</Link> 
+						<Link to={`/post/${id}`} className="title">{title}</Link> 
 					
 						<div>
 						
-							<Link to={`/category/${this.props.post.category}`}>
-								<Label className="category-tag" horizontal>{this.props.post.category}</Label>
+							<Link to={`/category/${category}`}>
+								<Label className="category-tag" horizontal>{category}</Label>
 							</Link>
 
 
@@ -61,7 +65,7 @@ class PostInList extends Component {
 				</article>
 
 				<div className="button-container">
-					<Button compact positive className="edit-button" >
+					<Button compact  positive className="edit-button" >
 						<Icon name='edit' />
 						edit
 					</Button>

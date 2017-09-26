@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 
+import * as ReadablesAPI from '../utils/ReadablesAPI'
+
 class VoteScore extends Component {
 
     render() {
-        const { voteScore } = this.props;
+        const { voteScore, id } = this.props;
 
         return (
             <div className="votes">
@@ -14,11 +16,11 @@ class VoteScore extends Component {
 				</div>
 
 				<div className="voting-buttons">
-					<Button className="up-vote-button" compact primary icon>
-					<Icon name='thumbs outline up' />
+					<Button onClick={() => ( ReadablesAPI.votePost(id, 1))} className="up-vote-button" compact icon>
+					<Icon color='blue' size='large' name='thumbs outline up' />
 					</Button>
-					<Button className="down-vote-button" compact negative icon>
-					<Icon name='thumbs outline down' />
+					<Button onClick={() => ( ReadablesAPI.votePost(id, 0))} className="down-vote-button" compact icon>
+					<Icon color='red' size='large' name='thumbs outline down' />
 					</Button> 
 				</div>
 
