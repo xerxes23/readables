@@ -38,7 +38,7 @@ class PostInList extends Component {
 	render() {
 
 		const { voteScore, id, author, timestamp, title, category } = this.props.post
-		
+
 		const { comments } = this.props
 
 		let postComments = false
@@ -119,4 +119,4 @@ function mapStateToProps(state, props) {
   }
   
 
-  export default withRouter((connect(mapStateToProps, mapDispatchToProps)(PostInList)))
+  export default connect(mapStateToProps, mapDispatchToProps)(PostInList)

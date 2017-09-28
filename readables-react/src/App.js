@@ -7,7 +7,7 @@ import { withRouter } from 'react-router'
 // Components
 import Header from './components/Header'
 import Footer from './components/Footer'
-import PostForm from './components/PostForm'
+import NewPostForm from './components/NewPostForm'
 import PostView from './components/PostView'
 import CategoryView from './components/CategoryView'
 import Home from './components/Home'
@@ -59,7 +59,7 @@ class App extends Component {
               )}/>
             
               <Route exact path="/new" render={({ match }) => (
-                < PostForm />
+                < NewPostForm />
               )}/>
               
               <Route exact path="/post/:id" render={({ match }) => (
@@ -121,4 +121,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default withRouter((connect(mapStateToProps, mapDispatchToProps)(App)))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

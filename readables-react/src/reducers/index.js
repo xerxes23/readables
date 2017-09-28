@@ -1,5 +1,7 @@
 // Libs
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
+
 
 // Reducers
 import { categories, categoriesAreLoading } from './categories'
@@ -14,6 +16,6 @@ export default combineReducers({
     comments,
     sortMethod,
     postsAreLoading,
-    categoriesAreLoading
-    
+    categoriesAreLoading,
+    form: formReducer
 })
