@@ -96,7 +96,7 @@ class App extends Component {
 function mapStateToProps (state, props) {
   return {
     categories: state.categories,
-    posts: state.posts.filter(post => post.deleted === false),
+    posts: state.posts,
     loadingCategories: state.categoriesAreLoading,
     loadingPosts: state.loadingPosts
   }

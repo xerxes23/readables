@@ -247,19 +247,27 @@
 .form-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     
+    
+
     h1 {
         margin: 20px;
     }
     .post-form {
-        max-width: 600px;
         display: flex;
         flex-direction: column;
-
         margin: 20px;
+
+        .field {
+            margin: 10px;
+            .label {
+                margin-bottom: 10px;
+            }
+        }
         .form-buttons {
             display: flex;
-            justify-content: flex-end;
+           
         }
     }
     

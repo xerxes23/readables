@@ -170,17 +170,20 @@
 /* ################ Post Form ################ */
 .form-container {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  justify-content: center; }
   .form-container h1 {
     margin: 20px; }
   .form-container .post-form {
-    max-width: 600px;
     display: flex;
     flex-direction: column;
     margin: 20px; }
+    .form-container .post-form .field {
+      margin: 10px; }
+      .form-container .post-form .field .label {
+        margin-bottom: 10px; }
     .form-container .post-form .form-buttons {
-      display: flex;
-      justify-content: flex-end; }
+      display: flex; }
 
 /* ################ Post View ################ */
 .post-view {
