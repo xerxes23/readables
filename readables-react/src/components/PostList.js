@@ -3,6 +3,10 @@ import { Button, Icon, Select } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import PostInList from './PostInList'
 import { sortByDate, sortByScore } from '../utils/utils'
+import { Loader } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+
+import { updateSortMethod } from '../actions/posts'
 
 class PostList extends Component {
 
@@ -10,13 +14,16 @@ class PostList extends Component {
         
 
         const { posts, sortMethod } = this.props;
-
-        sortMethod === 'date' ? posts.sort(sortByDate) : posts.sort(sortByScore)
+        console.log(posts)
+        
+        if (posts.length) {
+            sortMethod == 'date' ? posts.sort(sortByDate) : posts.sort(sortByScore)
+        }
 
         const postNumber = posts? posts.length === 1? `1 post`: `${posts.length} posts`: 'loading'
 
         const sortOptions = [{ key: 'date', value: 'date', text: 'Date' },
-        { key: 'votes', value: 'votes', text: 'Votes' }];
+        { key: 'score', value: 'score', text: 'Score' }];
 
 
         return (
@@ -24,14 +31,22 @@ class PostList extends Component {
                
                 <div className="post-list-controls" >
                     <h1 className="post-count" > { posts.length } Posts </h1>
-                    <Select compact className="sort-selector" placeholder='Sort By' options={sortOptions} />
+                    <select
+                        value={sortMethod}
+                        onChange={event => {this.props.updateSortMethod(event.target.value)}}
+                    >
+                        <option value="score">Top Score</option>
+                        <option value="date">Most recent</option>
+                    </select>
                 </div>  
 
                 <div className="post-list" >
                     
-                    { posts.map( (post, i) => {
+                    { posts.length ? posts.map( (post, i) => {
 						return <PostInList key={i} post={post} />
-					})}
+					}): <Loader active />
+                    
+                    }  
 
                 </div>   
 
@@ -50,4 +65,20 @@ class PostList extends Component {
     }
 }
 
-export default PostList;
+
+
+function mapStateToProps (state, props) {
+    return {
+      sortMethod: state.sortMethod
+    }
+  }
+  
+function mapDispatchToProps(dispatch) {
+    return {
+        updateSortMethod: newSortMethod => {
+            dispatch(updateSortMethod(newSortMethod))
+        }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps) (PostList);

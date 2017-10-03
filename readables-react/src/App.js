@@ -36,7 +36,7 @@ class App extends Component {
 
   render() {
 
-    const { posts, categories } = this.props
+    const { posts, categories, history } = this.props
 
     return (
         <div className="app">
@@ -59,7 +59,7 @@ class App extends Component {
               )}/>
             
               <Route exact path="/new" render={({ match }) => (
-                < NewPostForm />
+                < NewPostForm  history={history} />
               )}/>
               
               <Route exact path="/post/:id" render={({ match }) => (

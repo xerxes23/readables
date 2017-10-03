@@ -24,6 +24,7 @@ class NewPostForm extends Component {
         console.log(data)
         this.props.addNewPost(data)
         this.props.getAllPosts()
+        
 	}
 
     render() {  
@@ -108,14 +109,17 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, ownProps)  => ({
     addNewPost: values => {
         ReadablesAPI.addPost(values)
-          .then(() => {
-            dispatch(addNewPost(values)) 
+            .then(() => {
+                dispatch(addNewPost(values))
+                ownProps.history.push('/')
+         
     })},
     getAllPosts: () => {
         dispatch(postsAreLoading(true))
-        ReadablesAPI.getAllPosts().then(posts => {
-            dispatch(setPosts(posts))
-            dispatch(postsAreLoading(false))
+        ReadablesAPI.getAllPosts()
+            .then(posts => {
+                dispatch(setPosts(posts))
+                dispatch(postsAreLoading(false))
     })}
 });
 

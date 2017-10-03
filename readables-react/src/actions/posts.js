@@ -1,6 +1,7 @@
 export const SET_POSTS = 'SET_POSTS'
 export const POSTS_ARE_LOADING = 'POSTS_ARE_LOADING'
 export const ADD_NEW_POST = 'ADD_NEW_POST'
+export const UPDATE_SORT_METHOD = 'UPDATE_SORT_METHOD'
 
 export const setPosts = (posts) => {
   return {
@@ -27,5 +28,13 @@ export function addNewPost(values) {
     body: values.body,
     id: values.id,
     timestamp: values.timestamp
+  }
+}
+
+
+export function updateSortMethod(method) {
+  return {
+    type: UPDATE_SORT_METHOD,
+    method
   }
 }
