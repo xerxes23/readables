@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Icon, Select } from 'semantic-ui-react'
+import { Button, Icon, Loader } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import PostInList from './PostInList'
 import { sortByDate, sortByScore } from '../utils/utils'
-import { Loader } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 import { updateSortMethod } from '../actions/posts'
@@ -13,24 +12,21 @@ class PostList extends Component {
     render() {
         
 
-        const { posts, sortMethod } = this.props;
-        console.log(posts)
+        const { posts, sortMethod, history } = this.props;
         
         if (posts.length) {
-            sortMethod == 'date' ? posts.sort(sortByDate) : posts.sort(sortByScore)
+            sortMethod === 'date' ? posts.sort(sortByDate) : posts.sort(sortByScore)
         }
 
-        const postNumber = posts? posts.length === 1? `1 post`: `${posts.length} posts`: 'loading'
-
-        const sortOptions = [{ key: 'date', value: 'date', text: 'Date' },
-        { key: 'score', value: 'score', text: 'Score' }];
+        let visiblePosts = posts.filter( post => {return post.deleted===false})
+        const postNumber = posts? visiblePosts.length === 1? `1 post`: `${visiblePosts.length} posts`: 'loading'
 
 
         return (
             <div className="container" >
                
                 <div className="post-list-controls" >
-                    <h1 className="post-count" > { posts.length } Posts </h1>
+                    <h1 className="post-count" > { postNumber } </h1>
                     <select
                         value={sortMethod}
                         onChange={event => {this.props.updateSortMethod(event.target.value)}}
@@ -42,9 +38,11 @@ class PostList extends Component {
 
                 <div className="post-list" >
                     
-                    { posts.length ? posts.map( (post, i) => {
-						return <PostInList key={i} post={post} />
-					}): <Loader active />
+                    { posts ? posts
+                    .filter( post => {return post.deleted===false}) 
+                    .map( (post, i) => {
+						return <PostInList key={i} post={post} history={history} />
+					}): <div className='loader' > <Loader size='large' active /> </div>
                     
                     }  
 

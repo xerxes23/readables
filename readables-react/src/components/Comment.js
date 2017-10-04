@@ -1,19 +1,17 @@
-// Libs
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Icon, Label } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 // Utils
 import { showDate } from '../utils/utils.js'
 
 // Components
-import VoteScore from './VoteScore'
+import CommentVoteScore from './CommentVoteScore'
 
 
 const Comment = (props) => (
 	<div className="comment-in-list">
 	
-		< VoteScore voteScore={props.comment.voteScore} />
+		< CommentVoteScore comment={props.comment} voteScore={props.comment.voteScore} />
 
 		
 		<div className="comment-content">	

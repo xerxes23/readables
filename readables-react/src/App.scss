@@ -11,7 +11,9 @@
     flex-direction: column;
 }
 
-
+.loader {
+    margin: 100px;
+}
 
 
 /* ################ NAV ################ */
@@ -218,6 +220,19 @@
     }
 }
 
+/* ################ Delete Modal ################ */
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    background-color: rgba(195, 115, 115, 0.75) !important;
+    z-index: 5;
+  }
+  .ReactModal__Content.ReactModal__Content--after-open {
+    width: 300px !important;
+    margin: auto !important;
+    height: 242px !important;
+  }
+
+
+
 /* ################ FOOTER ################ */
 
 .footer {
@@ -261,12 +276,25 @@
 
         .field {
             margin: 10px;
-            .label {
-                margin-bottom: 10px;
-            }
+            width: 200px;
+            height: 30px; 
+            
         }
+
+        .text-area {
+            margin: 10px;
+            width: 200px;
+            height: 80px;
+        }
+        
+        .label {
+            margin-bottom: 10px;
+        }
+
         .form-buttons {
             display: flex;
+            justify-content: space-between;
+            flex-direction: row-reverse;
            
         }
     }

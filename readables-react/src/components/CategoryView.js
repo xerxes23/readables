@@ -12,7 +12,7 @@ class CategoryView extends Component {
 
 
     render() {
-        const { posts, categoryPath } = this.props
+        const { posts, categoryPath, history } = this.props
     
         const filteredPosts = posts.filter( p => {
             return p.category === categoryPath
@@ -29,7 +29,7 @@ class CategoryView extends Component {
 
                 {/* Post List Component */}
 
-                <PostList posts={filteredPosts}/>
+                <PostList posts={filteredPosts} history={history} />
 
             </div>
         );

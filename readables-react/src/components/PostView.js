@@ -1,30 +1,14 @@
 import React, { Component } from 'react'
-
-import VoteScore from './VoteScore'
-import { Button, Icon, Label, Loader } from 'semantic-ui-react'
-
-import CommentList from './CommentList'
+import { Loader } from 'semantic-ui-react'
 import Post from './Post'
-
-import * as ReadablesAPI from '../utils/ReadablesAPI'
+import { connect } from 'react-redux'
 
 class PostView extends Component {
-
-    state = {
-        comments: []
-    }
-
-    componentDidMount = () => {
-        
-        ReadablesAPI.getCommentsByPostId(this.props.postId).then(data => {
-            this.setState({ comments: data })
-        })
-    }
     
 
     render() {
         
-        const { posts, postId } = this.props
+        const { posts, postId, history, comments } = this.props
         
         let post = false
     
@@ -37,7 +21,7 @@ class PostView extends Component {
             <div className="" > 
 
                 {
-                    post ? <Post post={post} comments={this.state.comments} /> : <Loader active />
+                    post ? <Post post={post} comments={comments} history={history} /> : <Loader active />
                 }    
 
             </div>
@@ -45,4 +29,16 @@ class PostView extends Component {
     }
 }
 
-export default PostView
+
+function mapStateToProps(state, ownProps) {
+	return {
+        comments: state.comments[ownProps.postId]
+	}
+  }
+  
+function mapDispatchToProps(dispatch, ownProps, state) {
+    return {
+    }
+}
+
+  export default connect(mapStateToProps, mapDispatchToProps)(PostView)

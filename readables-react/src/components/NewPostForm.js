@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
+import { Link } from 'react-router-dom'
 import faker from 'faker'
 
+// Actions
 import { setPosts, postsAreLoading, addNewPost } from '../actions/posts'
 
-//Utils
+// Utils
 import * as ReadablesAPI from '../utils/ReadablesAPI'
 
 class NewPostForm extends Component {
@@ -21,7 +23,7 @@ class NewPostForm extends Component {
             id: faker.random.uuid(),
             timestamp: Date.now()
         }
-        console.log(data)
+
         this.props.addNewPost(data)
         this.props.getAllPosts()
         
@@ -29,7 +31,7 @@ class NewPostForm extends Component {
 
     render() {  
   
-        const { handleSubmit, pristine, reset, submitting } = this.props
+        const { handleSubmit, pristine, submitting } = this.props
     
         return (
             
@@ -38,36 +40,42 @@ class NewPostForm extends Component {
                 <h1> Add New Post </h1>
 
                 <form className='post-form' onSubmit={handleSubmit(this.onSubmit)}>
-                    <div className='field' >
+                    <div  >
                         <label className='label' >Post Title</label>
                         <div>
                             <Field
                                 name="title"
                                 component="input"
                                 type="text"
-                                placeholder="Post Title"
+                                placeholder=" Post Title"
+                                className='field'
                             />
                         </div>
                     </div>
 
-                    <div className='field' >
+                    <div >
                         <label className='label' >Username</label>
                         <div>
                             <Field
                                 name="author"
                                 component="input"
                                 type="text"
-                                placeholder="Username"
+                                placeholder=" Username"
+                                className='field'
                             />
                         </div>
                     </div>
                     
                     
-                    <div className='field'  >
+                    <div >
                         <label className='label' >Category</label>
                         
                         <div>
-                            <Field name="category" component="select">
+                            <Field 
+                                name="category" 
+                                component="select"
+                                className='field'
+                            >
                                 <option >Select one</option>    
                                 <option value="react">React</option>
                                 <option value="redux">Redux</option>
@@ -78,21 +86,29 @@ class NewPostForm extends Component {
 
 
                     
-                    <div className='field' >
+                    <div >
                         <label className='label' >Message</label>
                         <div>
-                            <Field name="body" component="textarea" />
+                            <Field 
+                                name="body" 
+                                component="textarea"
+                                className='text-area' 
+                            />
                         </div>
                     </div>
 
                     <div className='form-buttons field' >
+                        
                         <button type="submit" disabled={pristine || submitting}>
                             Submit
                         </button>
                         
-                        <button type="button" disabled={pristine || submitting} onClick={reset}>
-                            Clear Values
-                        </button>
+                        <Link to='/' >  
+                            <button type="button" >
+                                Cancel
+                            </button>
+                        </Link>
+
                     </div>
 
                 </form>

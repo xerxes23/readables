@@ -8,6 +8,7 @@ import { withRouter } from 'react-router'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import NewPostForm from './components/NewPostForm'
+import PostEdit from './components/PostEdit'
 import PostView from './components/PostView'
 import CategoryView from './components/CategoryView'
 import Home from './components/Home'
@@ -20,6 +21,7 @@ import { setPosts, postsAreLoading } from './actions/posts'
 
 //Utils
 import * as ReadablesAPI from './utils/ReadablesAPI'
+import { objectToArray} from './utils/utils.js'
 
 // CSS
 import './App.css'
@@ -55,6 +57,7 @@ class App extends Component {
                 < Home 
                   posts={ posts } 
                   categories={ categories }
+                  history={ history }
                 />
               )}/>
             
@@ -62,10 +65,19 @@ class App extends Component {
                 < NewPostForm  history={history} />
               )}/>
               
+              <Route exact path="/edit/:id" render={({ match }) => (
+                < PostEdit 
+                  history={history}
+                  post={posts.find(post => post.id === match.params.id)}
+                  postId={match.params.id}
+                />
+              )}/>
+
               <Route exact path="/post/:id" render={({ match }) => (
                 < PostView 
                   postId={match.params.id}
                   posts={posts}
+                  history={history}
                 />
               )}/>
 
@@ -73,6 +85,7 @@ class App extends Component {
                 < CategoryView 
                   posts={posts}
                   categoryPath={match.params.url}
+                  history={history}
                 />
               )}/>
               
@@ -96,7 +109,7 @@ class App extends Component {
 function mapStateToProps (state, props) {
   return {
     categories: state.categories,
-    posts: state.posts,
+    posts: objectToArray(state.posts),
     loadingCategories: state.categoriesAreLoading,
     loadingPosts: state.loadingPosts
   }

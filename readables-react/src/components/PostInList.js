@@ -1,17 +1,16 @@
-
-// Libs
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Icon, Label } from 'semantic-ui-react'
+import { Button, Icon, Label, Loader } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
+import PostDeleteModal from './PostDeleteModal'
 
-
+// Actions
 import { setPostComments } from '../actions/comments'
+import { displayDeleteModal, setPostIdToDeleteModal } from '../actions/posts'
 
 // Utils
 import * as ReadablesAPI from '../utils/ReadablesAPI'
-import { showDate } from '../utils/utils.js'
+import { showDate, toTitleCase } from '../utils/utils.js'
 
 
 // Components
@@ -19,16 +18,6 @@ import VoteScore from './VoteScore'
 
 class PostInList extends Component {
 	
-	/* state={
-		comments: [],
-	}
-
-	componentDidMount = () => {
-		ReadablesAPI.getCommentsByPostId(this.props.post.id).then(data => {
-			this.setState({ comments: data })
-	  })
-	}
- */
 
 	componentDidMount = () => {
 		this.props.setPostComments()
@@ -39,7 +28,7 @@ class PostInList extends Component {
 
 		const { voteScore, id, author, timestamp, title, category } = this.props.post
 
-		const { comments } = this.props
+		const { comments, history, deletePostModal } = this.props
 
 		let postComments = false
 		if (comments) {
@@ -73,7 +62,10 @@ class PostInList extends Component {
 						<div>
 						
 							<Link to={`/category/${category}`}>
-								<Label className="category-tag" horizontal>{category}</Label>
+								{category?
+									<Label className="category-tag" horizontal>{toTitleCase(category)}</Label>
+									: <Loader active />
+								}
 							</Link>
 
 
@@ -87,15 +79,28 @@ class PostInList extends Component {
 				</article>
 
 				<div className="button-container">
-					<Button compact  positive className="edit-button" >
-						<Icon name='edit' />
-						edit
-					</Button>
-					<Button compact negative className="delete-button">
+					<Link to={`/edit/${id}`} >
+						<Button compact  positive className="edit-button" >
+							<Icon name='edit' />
+							edit
+						</Button>
+					</Link>
+					<Button 
+						compact 
+						negative 
+						className="delete-button"
+						onClick={() => {
+                			this.props.setPostIdToDeleteModal(id)
+                			this.props.displayDeleteModal(true)
+              			}}
+					>
+
 						<Icon name='trash outline' />
 						delete
 					</Button>
 				</div>
+				
+				<PostDeleteModal deletePostModal={deletePostModal} history={history} />
 			
 			</div>
 		)
@@ -105,17 +110,25 @@ class PostInList extends Component {
 function mapStateToProps(state, props) {
 	return {
 	  comments: state.comments,
+	  deletePostModal: state.deletePostModal
 	}
   }
   
   function mapDispatchToProps(dispatch, ownProps) {
-	return {
-	  setPostComments: () => {
-		ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
-		  dispatch(setPostComments(ownProps.post.id, comments))
-		})
-	  }
-	}
+			return {
+				setPostComments: () => {
+						ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
+						dispatch(setPostComments(ownProps.post.id, comments))
+				})},
+				
+				displayDeleteModal: bool => {
+					dispatch(displayDeleteModal(bool))
+				},
+
+				setPostIdToDeleteModal: postId => {
+					dispatch(setPostIdToDeleteModal(postId))
+				}
+			}
   }
   
 

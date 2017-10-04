@@ -46,3 +46,9 @@ export const sortByDate = (a, b) => {
   if (a.timestamp < b.timestamp) return 1
   return 0
 }
+
+
+export const objectToArray = obj => {
+	if (obj) return Object.keys(obj).map(key => obj[key])
+	else return []
+  }

@@ -1,5 +1,4 @@
 // Libs
-// Libs
 import React, { Component } from 'react'
 
 // Utils

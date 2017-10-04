@@ -1,7 +1,10 @@
 
 import React, { Component } from 'react'
-import { Button, Select, TextArea, Form, Input } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+import { Button, TextArea, Form, Input, Loader } from 'semantic-ui-react'
+import { sortByDate, sortByScore } from '../utils/utils'
+import { connect } from 'react-redux'
+
+import { updateCommentSortMethod } from '../actions/comments'
 
 // Components
 import Comment from './Comment'
@@ -11,10 +14,11 @@ class CommentList extends Component {
 
     render() {
     
-        const { comments } = this.props
+        const { comments, commentSortMethod, updateCommentSortMethod } = this.props
 
-        const sortOptions = [{ key: 'date', value: 'date', text: 'Date' },
-        { key: 'votes', value: 'votes', text: 'Votes' }];
+        if (comments) {
+            commentSortMethod === 'date' ? comments.sort(sortByDate) : comments.sort(sortByScore)
+        }
 
         const commentNumber = comments? comments.length === 1? `1 comment`: `${comments.length} comments`:'loading'
         
@@ -25,16 +29,23 @@ class CommentList extends Component {
                
                 <div className="comment-list-controls" >
                     <h1 className="comment-count" > {commentNumber} </h1>
-                    <Select compact className="sort-selector" placeholder='Sort By' options={sortOptions} />
+                    <select
+                        value={commentSortMethod}
+                        onChange={event => {updateCommentSortMethod(event.target.value)}}
+                    >
+                        <option value="score">Top Score</option>
+                        <option value="date">Most recent</option>
+                    </select>
                 </div>  
 
                 <div className="comment-list" >
                     
-                    {
+                    {   comments ?
                         comments.map( (comment, index) => ( 
-                            < Comment  key={index} comment={comment}/>
-                        ))
+                            < Comment  key={index} comment={comment} />
+                        )) : <div className='loader' > <Loader size='large' active /> </div>
                     }    
+
 
                 </div>   
 
@@ -55,4 +66,19 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList;
+
+function mapStateToProps (state, props) {
+    return {
+      commentSortMethod: state.commentSortMethod
+    }
+  }
+  
+function mapDispatchToProps(dispatch) {
+    return {
+        updateCommentSortMethod: newSortMethod => {
+            dispatch(updateCommentSortMethod(newSortMethod))
+        }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps) (CommentList);

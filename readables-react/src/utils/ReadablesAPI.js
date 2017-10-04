@@ -51,13 +51,6 @@ export const deletePostById =  postId => {
 
 export const editPostById = (postId, body) => {
        
-   // const body = {
-     //   title: formValues.title,
-       // category: formValues.category,
-       // author: formValues.author,
-       // body: formValues.body
-   // }
-
    return fetch(`${api}/posts/${postId}`, {
         method: 'PUT',
         headers: {
