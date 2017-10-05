@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 
 import { setPosts, postsAreLoading, updatePost } from '../actions/posts'
@@ -81,9 +82,9 @@ class PostEdit extends Component {
 
                     <div className='form-buttons field' >
                        
-                        <button type="submit" disabled={pristine || submitting}>
+                        <Button positive type="submit" disabled={pristine || submitting}>
                             Update
-                        </button>
+                        </Button>
 
                         <Link to='/' >  
                             <button type="button" >

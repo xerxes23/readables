@@ -76,7 +76,7 @@ class Post extends Component {
 
                     </div>
 
-                    < CommentList comments={comments} />
+                    < CommentList comments={comments} parentId={id} />
 
                 </div>
                 

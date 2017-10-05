@@ -8,13 +8,13 @@ import { updateCommentSortMethod } from '../actions/comments'
 
 // Components
 import Comment from './Comment'
-
+import CommentForm from './CommentForm'
 
 class CommentList extends Component {
 
     render() {
     
-        const { comments, commentSortMethod, updateCommentSortMethod } = this.props
+        const { comments, commentSortMethod, updateCommentSortMethod, parentId } = this.props
 
         if (comments) {
             commentSortMethod === 'date' ? comments.sort(sortByDate) : comments.sort(sortByScore)
@@ -49,18 +49,9 @@ class CommentList extends Component {
 
                 </div>   
 
-                <div className="new-comment-input" >
-                    <h2> Add a comment: </h2>
-                    <Form>
-                        <Form.Field control={Input} placeholder='Username' />
-                        
-                        <TextArea placeholder='Comment away!' />
-                        
-                        <Button positive floated='right' className="post-button" type='submit'>Post Comment</Button>
-                    </Form>
-                    
 
-                </div>  
+                <CommentForm parentId={parentId} />
+  
             </div>
         );
     }

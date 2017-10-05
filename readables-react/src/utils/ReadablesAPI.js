@@ -95,7 +95,7 @@ export const voteComment = (commentId, value) => {
 }
 
 
-export const addComment = (postId, body) => {
+export const addComment = (body) => {
     
     return fetch(`${api}/comments/`, {
         method: 'POST',

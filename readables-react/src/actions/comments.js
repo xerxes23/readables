@@ -1,7 +1,7 @@
 export const APPLY_VOTE_TO_COMMENT = 'APPLY_VOTE_TO_COMMENT'
 export const SET_COMMENTS_TO_POST_ID = 'SET_COMMENTS_TO_POST_ID'
 export const UPDATE_COMMENT_SORT_METHOD = 'UPDATE_COMMENT_SORT_METHOD'
-
+export const ADD_COMMENT = 'ADD_COMMENT'
 export function setPostComments(postId, comments) {
     return {
       type: SET_COMMENTS_TO_POST_ID,
@@ -24,5 +24,13 @@ export function applyVoteToComment(commentId, parentId, newValue) {
     commentId,
     parentId,
     newValue
+  }
+}
+
+export function addNewComment(postId, comment) {
+  return {
+    type: ADD_COMMENT,
+    postId,
+    comment
   }
 }

@@ -153,7 +153,7 @@
 
 /* ################ Delete Modal ################ */
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
-  background-color: rgba(195, 115, 115, 0.75) !important;
+  background-color: rgba(164, 239, 215, 0.75) !important;
   z-index: 5; }
 
 .ReactModal__Content.ReactModal__Content--after-open {
@@ -193,11 +193,11 @@
     margin: 20px; }
     .form-container .post-form .field {
       margin: 10px;
-      width: 200px;
+      width: 80%;
       height: 30px; }
     .form-container .post-form .text-area {
       margin: 10px;
-      width: 200px;
+      width: 80%;
       height: 80px; }
     .form-container .post-form .label {
       margin-bottom: 10px; }

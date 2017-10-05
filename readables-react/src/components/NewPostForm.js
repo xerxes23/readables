@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 import faker from 'faker'
 
 // Actions
@@ -99,14 +100,14 @@ class NewPostForm extends Component {
 
                     <div className='form-buttons field' >
                         
-                        <button type="submit" disabled={pristine || submitting}>
+                        <Button positive type="submit" disabled={pristine || submitting}>
                             Submit
-                        </button>
+                        </Button>
                         
                         <Link to='/' >  
-                            <button type="button" >
+                            <Button negative type="button" >
                                 Cancel
-                            </button>
+                            </Button>
                         </Link>
 
                     </div>

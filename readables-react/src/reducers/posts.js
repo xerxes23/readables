@@ -28,13 +28,13 @@ export const posts = (state = {}, action) => {
 
         case SET_POSTS:
             let stateWithPosts = []
-      action.posts.forEach(post => {
-        stateWithPosts = {
-          ...stateWithPosts,
-          [post.id]: post
-        }
-      })
-      return stateWithPosts
+            action.posts.forEach(post => {
+                stateWithPosts = {
+                  ...stateWithPosts,
+                  [post.id]: post
+                  }
+            })
+            return stateWithPosts
         
 
         case ADD_NEW_POST:
