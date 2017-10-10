@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react'
 
-const Footer = () =>  (
+const Footer = (props) =>  (
     <footer className="footer">         
             
         <p>
@@ -18,7 +18,7 @@ const Footer = () =>  (
                 <Icon size='big' className="git-link" name='github' />
             </a>
 
-            <a href="https://github.com/xerxes23"> 
+            <a href="https://www.linkedin.com/in/joseph-mendoza-92389651/"> 
                 <Icon size='big' className="git-link" name='linkedin' />
             </a>
 

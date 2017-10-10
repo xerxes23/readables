@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { applyVote } from '../actions/posts'
+import { applyVoteToComment } from '../actions/comments'
 import * as ReadablesAPI from '../utils/ReadablesAPI'
 
-class VoteScore extends Component {
+class CommentVoteScore extends Component {
 
     render() {
-        const { voteScore } = this.props;
+        const { voteScore, applyVoteToComment } = this.props;
 
         return (
             <div className="votes">
@@ -20,7 +20,7 @@ class VoteScore extends Component {
 					
 					
 					<Button 
-						onClick={() => this.props.applyVote(voteScore, 1)} 
+						onClick={() => applyVoteToComment(voteScore, 1)} 
 						className="up-vote-button" 
 						compact 
 						icon
@@ -30,7 +30,7 @@ class VoteScore extends Component {
 					
 					
 					<Button 
-						onClick={() => this.props.applyVote(voteScore, -1)} 
+						onClick={() => applyVoteToComment(voteScore, -1)} 
 						className="down-vote-button" 
 						compact 
 						icon>
@@ -43,18 +43,21 @@ class VoteScore extends Component {
     }
 }
 
-function mapStateToProps(state, props) {
-	return {
-	}
-  }
+const mapStateToProps = (state, ownProps) => ({
+//...
+})
   
-  function mapDispatchToProps(dispatch, ownProps, state) {
-	return {
-	  applyVote: (newValue, diff) => {
-		ReadablesAPI.votePost(ownProps.id, diff)
-		dispatch(applyVote(ownProps.id, newValue + diff))
-	  }
-	}
-  }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(VoteScore)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	applyVoteToComment: (newValue, diff) => {
+		ReadablesAPI.voteComment(ownProps.comment.id, diff)
+		dispatch(applyVoteToComment(
+			ownProps.comment.id,
+			ownProps.comment.parentId,
+			newValue + diff
+		))
+	}
+})
+
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CommentVoteScore)

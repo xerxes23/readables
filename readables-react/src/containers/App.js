@@ -5,26 +5,26 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 // Components
-import Header from './components/Header'
-import Footer from './components/Footer'
-import NewPostForm from './components/NewPostForm'
-import PostEdit from './components/PostEdit'
-import PostView from './components/PostView'
-import CategoryView from './components/CategoryView'
-import Home from './components/Home'
-import NotFound from './components/NotFound'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import NewPostForm from './NewPostForm'
+import PostEdit from './PostEdit'
+import PostView from './PostView'
+import CategoryView from '../components/CategoryView'
+import Home from '../components/Home'
+import NotFound from '../components/NotFound'
 
 // Actions
-import { setCategories, categoriesAreLoading } from './actions/categories'
-import { setPosts, postsAreLoading } from './actions/posts'
+import { setCategories, categoriesAreLoading } from '../actions/categories'
+import { setPosts, postsAreLoading } from '../actions/posts'
 
 
 //Utils
-import * as ReadablesAPI from './utils/ReadablesAPI'
-import { objectToArray} from './utils/utils.js'
+import * as ReadablesAPI from '../utils/ReadablesAPI'
+import { objectToArray} from '../utils/utils.js'
 
 // CSS
-import './App.css'
+import '../App.css'
 
 
 class App extends Component {
@@ -33,6 +33,7 @@ class App extends Component {
     
     this.props.getAllCategories() 
     this.props.getAllPosts()  
+
 
   }
 

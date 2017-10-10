@@ -107,29 +107,23 @@ class PostInList extends Component {
 	};
 }
 
-function mapStateToProps(state, props) {
-	return {
+const mapStateToProps = (state, ownProps) => ({
 	  comments: state.comments,
 	  deletePostModal: state.deletePostModal
-	}
-  }
+})
   
-  function mapDispatchToProps(dispatch, ownProps) {
-			return {
-				setPostComments: () => {
-						ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
-						dispatch(setPostComments(ownProps.post.id, comments))
-				})},
-				
-				displayDeleteModal: bool => {
-					dispatch(displayDeleteModal(bool))
-				},
-
-				setPostIdToDeleteModal: postId => {
-					dispatch(setPostIdToDeleteModal(postId))
-				}
-			}
-  }
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	setPostComments: () => {
+			ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
+			dispatch(setPostComments(ownProps.post.id, comments))
+	})},
+	displayDeleteModal: bool => {
+		dispatch(displayDeleteModal(bool))
+	},
+	setPostIdToDeleteModal: postId => {
+		dispatch(setPostIdToDeleteModal(postId))
+	}
+})
   
 
   export default connect(mapStateToProps, mapDispatchToProps)(PostInList)

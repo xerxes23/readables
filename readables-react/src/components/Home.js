@@ -1,28 +1,25 @@
 import React, { Component } from 'react'
-import PostList from './PostList'
+import PostList from '../containers/PostList'
 import Categories from './Categories'
 
 
-class Home extends Component {
+const Home = (props) => {
 
-    render() {
-        const { posts, categories, history } = this.props;
+    const { posts, categories, history } = props
 
-        return (
-            <div className="" >
+    return (
+        <div >
+            {/* Categories Component */}
 
-                {/* Categories Component */}
+            <Categories categories={ categories } />
 
-                <Categories categories={ categories } />
+            {/* Post List Component */}
 
+            <PostList posts={posts} history={history}/>
 
-                {/* Post List Component */}
+        </div>
+    );
 
-                <PostList posts={posts} history={history}/>
-
-            </div>
-        );
-    }
 }
 
 export default Home;

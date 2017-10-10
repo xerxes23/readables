@@ -6,35 +6,31 @@ import { Link } from 'react-router-dom'
 // Utils
 import { toTitleCase } from '../utils/utils.js'
 
-class Categories extends Component {
+const Categories = (props) => {
 
-    render() {
-    
-        
-        const { categories } = this.props
+    const { categories } = props
 
-        return (
-            <div className="category-wrapper">
+    return (
+        <div className="category-wrapper">
 
-        
-                <h3 className="category-title">Categories:</h3>
+            <h3 className="category-title">Categories:</h3>
+            
+            <div className="categories">
                 
-                <div className="categories">
-                    
-                    {
-                        categories.map( (category, i) => {
-                            return  <Link key={i} to={`category/${category.path}`} className="category-link" >
-                                       { toTitleCase(category.name)}
-                                    </Link>
-                        })
-                    }
-                    
+                {
+                    categories.map( (category, i) => {
+                        return  <Link key={i} to={`category/${category.path}`} className="category-link" >
+                                    { toTitleCase(category.name)}
+                                </Link>
+                    })
+                }
+                
 
-                </div> 
+            </div> 
 
-            </div>
-        );
-    }
+        </div>
+    );
 }
+
 
 export default Categories

@@ -62,14 +62,12 @@ class PostDeleteModal extends Component {
 	}
 }
 
-function mapStateToProps(state, props) {
-    return {
+const mapStateToProps = (state, props) => ({
         deletePostModal: state.deletePostModal
-    }
-}
+    })
 
-function mapDispatchToProps(dispatch, ownProps) {
-    return {
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
         displayDeleteModal: (bool) => {
             dispatch(displayDeleteModal(bool))
         },
@@ -77,7 +75,7 @@ function mapDispatchToProps(dispatch, ownProps) {
             ReadablesAPI.deletePostById(postIdToDelete).then(() => dispatch(deletePost(postIdToDelete)))
             ownProps.history.push('/')
         }
-    }
-}   
+    })
+   
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDeleteModal)

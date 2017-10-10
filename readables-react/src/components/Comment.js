@@ -5,40 +5,45 @@ import { Button, Icon } from 'semantic-ui-react'
 import { showDate } from '../utils/utils.js'
 
 // Components
-import CommentVoteScore from './CommentVoteScore'
+import CommentVoteScore from '../containers/CommentVoteScore'
 
 
-const Comment = (props) => (
-	<div className="comment-in-list">
-	
-		< CommentVoteScore comment={props.comment} voteScore={props.comment.voteScore} />
+const Comment = (props) => {
 
+	const { comment } = props
+	const { voteScore, timestamp, body, author } = props.comment
+	return (
+		<div className="comment-in-list">
 		
-		<div className="comment-content">	
-			
-			
-			<div className="meta-data">
-				<h4 className="data"> 
-					{props.comment.author}
-					&nbsp; · &nbsp;
-					<small>{showDate(props.comment.timestamp)}</small>
-				</h4>
-				<div className="buttons">
-					<Button compact positive className="edit-button" >
-						<Icon size='large' name='edit' />
-					</Button>
-					<Button compact negative className="delete-button">
-						<Icon size='large' name='trash outline' />
-					</Button>
-				</div>
-			</div>	
-					
-			<blockquote className="comment-body">{ props.comment.body }</blockquote> 
+			< CommentVoteScore comment={comment} voteScore={voteScore} />
 
-		</div>		
+			
+			<div className="comment-content">	
+				
+				
+				<div className="meta-data">
+					<h4 className="data"> 
+						{author}
+						&nbsp; · &nbsp;
+						<small>{showDate(timestamp)}</small>
+					</h4>
+					<div className="buttons">
+						<Button compact positive className="edit-button" >
+							<Icon size='large' name='edit' />
+						</Button>
+						<Button compact negative className="delete-button">
+							<Icon size='large' name='trash outline' />
+						</Button>
+					</div>
+				</div>	
+						
+				<blockquote className="comment-body">{ body }</blockquote> 
+
+			</div>		
+			
 		
-	
-	</div>
-)
+		</div>
+	)
+}
 
 export default Comment

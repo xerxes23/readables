@@ -13,7 +13,7 @@ import reducer from './reducers'
 import './index.css'
 
 //App
-import App from './App'
+import App from './containers/App'
 import registerServiceWorker from './registerServiceWorker'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { updateCommentSortMethod } from '../actions/comments'
 
 // Components
-import Comment from './Comment'
+import Comment from '../components/Comment'
 import CommentForm from './CommentForm'
 
 class CommentList extends Component {
@@ -46,9 +46,7 @@ class CommentList extends Component {
                         )) : <div className='loader' > <Loader size='large' active /> </div>
                     }    
 
-
                 </div>   
-
 
                 <CommentForm parentId={parentId} />
   
@@ -58,18 +56,14 @@ class CommentList extends Component {
 }
 
 
-function mapStateToProps (state, props) {
-    return {
-      commentSortMethod: state.commentSortMethod
+const mapStateToProps = (state, props) => ({
+    commentSortMethod: state.commentSortMethod
+})
+ 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    updateCommentSortMethod: newSortMethod => {
+        dispatch(updateCommentSortMethod(newSortMethod))
     }
-  }
-  
-function mapDispatchToProps(dispatch) {
-    return {
-        updateCommentSortMethod: newSortMethod => {
-            dispatch(updateCommentSortMethod(newSortMethod))
-        }
-    }
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps) (CommentList);
+})
+
+export default connect(mapStateToProps, mapDispatchToProps) (CommentList);

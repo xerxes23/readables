@@ -222,7 +222,7 @@
 
 /* ################ Delete Modal ################ */
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
-    background-color: rgba(164, 239, 215, 0.75) !important;
+    background-color: rgba(183, 249, 190, 0.75) !important;
     z-index: 5;
   }
   .ReactModal__Content.ReactModal__Content--after-open {
@@ -337,8 +337,7 @@
     .post-body {
         background-color: #F5F5F5;
         padding: 20px 40px 20px 40px;
-        
-        border-left: 5px solid grey;
+        font-size: 20px;
     }
 
     .meta-data {

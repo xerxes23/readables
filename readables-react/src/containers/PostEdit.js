@@ -101,10 +101,10 @@ class PostEdit extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    return {
-    }
-};
+const mapStateToProps = (state, ownProps) => ({
+//...
+})
+
 
 const mapDispatchToProps = (dispatch, ownProps)  => ({
     updatePost: values => {

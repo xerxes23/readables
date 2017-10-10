@@ -30,9 +30,9 @@ class Post extends Component {
                 <div className="main-content" >
                     <h1>{title}</h1>
                    
-                    <blockquote className="post-body" >  
+                    <h1 className="post-body" >  
                         {body}
-                    </blockquote>
+                    </h1>
                    
                     <div className="meta-data" > 
                         
@@ -91,28 +91,26 @@ class Post extends Component {
     }
 }
 
-function mapStateToProps(state, props) {
-	return {
+const mapStateToProps = (state, ownProps) => ({
 	  deletePostModal: state.deletePostModal
-	}
-  }
+})
   
-function mapDispatchToProps(dispatch, ownProps) {
-    return {
-        setPostComments: () => {
-                ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
-                dispatch(setPostComments(ownProps.post.id, comments))
-        })},
-        
-        displayDeleteModal: bool => {
-            dispatch(displayDeleteModal(bool))
-        },
+  
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    setPostComments: () => {
+            ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
+            dispatch(setPostComments(ownProps.post.id, comments))
+    })},
+    
+    displayDeleteModal: bool => {
+        dispatch(displayDeleteModal(bool))
+    },
 
-        setPostIdToDeleteModal: postId => {
-            dispatch(setPostIdToDeleteModal(postId))
-        }
+    setPostIdToDeleteModal: postId => {
+        dispatch(setPostIdToDeleteModal(postId))
     }
-}
+})
+
   
 
   export default connect(mapStateToProps, mapDispatchToProps)(Post)

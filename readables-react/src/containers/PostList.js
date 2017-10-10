@@ -65,18 +65,16 @@ class PostList extends Component {
 
 
 
-function mapStateToProps (state, props) {
-    return {
+const mapStateToProps = (state, ownProps) => ({
       sortMethod: state.sortMethod
-    }
-  }
+    })
   
-function mapDispatchToProps(dispatch) {
-    return {
+  
+const mapDispatchToProps = (dispatch, ownProps) => ({
         updateSortMethod: newSortMethod => {
             dispatch(updateSortMethod(newSortMethod))
         }
-    }
-  }
+    })
+  
   
   export default connect(mapStateToProps, mapDispatchToProps) (PostList);

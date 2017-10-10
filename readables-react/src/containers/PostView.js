@@ -30,15 +30,13 @@ class PostView extends Component {
 }
 
 
-function mapStateToProps(state, ownProps) {
-	return {
-        comments: state.comments[ownProps.postId]
-	}
-  }
+const mapStateToProps = (state, ownProps) => ({
+    comments: state.comments[ownProps.postId]
+})
   
-function mapDispatchToProps(dispatch, ownProps, state) {
-    return {
-    }
-}
+const mapDispatchToProps = (dispatch, ownProps ) => ({
+//...
+})
+
 
   export default connect(mapStateToProps, mapDispatchToProps)(PostView)
