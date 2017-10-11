@@ -110,7 +110,7 @@ class NewPostForm extends Component {
                     
                     
                     <Field 
-                        name="username" 
+                        name="category" 
                         type="text" 
                         component={renderSelectField} 
                         label="Category"
