@@ -11,11 +11,13 @@ class PostView extends Component {
         
         const { posts, postId, history, comments } = this.props
         
-        let post = true
+        let post = false
         
         if (posts) {
-          post = posts.find(post => post.id === postId)
+            post = posts.find(post => post.id === postId)
         }
+        
+        
 
         
         return (
@@ -23,10 +25,11 @@ class PostView extends Component {
 
 
                 {
-                    post ? 
+                    post
+                    ? 
                     <Post post={post} comments={comments} history={history} />
-                    :
-                    <Loader active />
+                    : 
+                    <Loader/>
                 }    
 
             </div>
