@@ -29,82 +29,83 @@ import '../App.css'
 
 class App extends Component {
 
-  componentWillMount() {
-    
-    this.props.getAllCategories() 
-    this.props.getAllPosts()  
+	componentWillMount = () => {
+		
+		this.props.getAllCategories() 
+		this.props.getAllPosts()  
 
+	}
 
-  }
+	render() {
 
-  render() {
+		const { posts, categories, history } = this.props
 
-    const { posts, categories, history } = this.props
+		return (
+			<div className="app">
 
-    return (
-        <div className="app">
+				<div className="main-wrapper">
 
-          <div className="main-wrapper">
+					{/* Navigation */}
 
-            {/* Navigation */}
+					< Header / >
+					
+					{/* Routes */}
 
-            < Header / >
-            
-            {/* Routes */}
+					<Switch >
+						
+						<Route exact path="/" render={({ match }) => (
+							< Home 
+								posts={ posts } 
+								categories={ categories }
+								history={ history }
+							/>
+						)}/>
+						
+						<Route exact path="/new" render={({ match }) => (
+							< NewPostForm  
+								history={history} 
+							/>
+						)}/>
+						
+						<Route exact path="/edit/:id" render={({ match }) => (
+							< PostEdit 
+								history={history}
+								post={posts.find(post => post.id === match.params.id)}
+								postId={match.params.id}
+							/>
+						)}/>
 
-            <Switch >
-              
-              <Route exact path="/" render={({ match }) => (
-                < Home 
-                  posts={ posts } 
-                  categories={ categories }
-                  history={ history }
-                />
-              )}/>
-            
-              <Route exact path="/new" render={({ match }) => (
-                < NewPostForm  history={history} />
-              )}/>
-              
-              <Route exact path="/edit/:id" render={({ match }) => (
-                < PostEdit 
-                  history={history}
-                  post={posts.find(post => post.id === match.params.id)}
-                  postId={match.params.id}
-                />
-              )}/>
+						<Route exact path="/:category/:id" render={({ match }) => (
+							< PostView 
+								postId={match.params.id}
+								posts={posts}
+								history={history}
+							/>
+						)}/>
 
-              <Route exact path="/post/:id" render={({ match }) => (
-                < PostView 
-                  postId={match.params.id}
-                  posts={posts}
-                  history={history}
-                />
-              )}/>
+						<Route exact path="/:url"  render={({ match }) => (
+							< CategoryView 
+								posts={posts}
+								categoryPath={match.params.url}
+								history={history}
+							/>
+						)}/>
+						
+						<Route render={() => (
+							<NotFound/>
+						)}/>
+					
+					</Switch>
+					
+				</div>
+				
+				{/* Footer*/}
 
-              <Route exact path="/category/:url"  render={({ match }) => (
-                < CategoryView 
-                  posts={posts}
-                  categoryPath={match.params.url}
-                  history={history}
-                />
-              )}/>
-              
-              <Route render={() => (
-                <NotFound/>
-              )}/>
-              
-            </Switch>
-            
-            </div>
-            
-					{/* Footer*/}
-
-          < Footer />
-          
-        </div>
-    )
-  }
+				< Footer />
+			
+			</div>
+		)
+	}
 }
 
 function mapStateToProps (state, props) {

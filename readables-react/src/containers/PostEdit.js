@@ -10,6 +10,42 @@ import { setPosts, postsAreLoading, updatePost } from '../actions/posts'
 //Utils
 import * as ReadablesAPI from '../utils/ReadablesAPI'
 
+const required = value => (value ? undefined : 'Required')
+
+const renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+  }) => (
+    <div>
+      <label className='label' >{label}</label>
+      <div>
+        <input className='field' {...input} placeholder={label} type={type} />
+        {touched &&
+          ((error && <span className='error' >{error}</span>) ||
+            (warning && <span className='warning' >{warning}</span>))}
+      </div>
+    </div>
+)
+
+const renderTextAreaField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+  }) => (
+    <div>
+      <label className='label' >{label}</label>
+      <div>
+        <textarea className='text-area' {...input} placeholder={label} type={type} />
+        {touched &&
+          ((error && <span className='error' >{error}</span>) ||
+            (warning && <span className='warning' >{warning}</span>))}
+      </div>
+    </div>
+)
+
 class PostEdit extends Component {
 
 
@@ -55,30 +91,26 @@ class PostEdit extends Component {
                 <h1> Update Post </h1>
 
                 <form className='post-form' onSubmit={handleSubmit(this.onSubmit)}>
-                    <div >
-                        <label className='label' >Post Title</label>
-                        <div>
-                            <Field
-                                name="title"
-                                component="input"
-                                type="text"
-                                placeholder="Post Title"
-                                className='field'
-                            />
-                        </div>
-                    </div>
+                    
+                   
+                    <Field
+                        name="title"
+                        component={renderField}
+                        type="text"
+                        label='Post Title'
+                        validate={required}
+                    />
+                     
 
 
-                    <div>
-                        <label className='label' >Message</label>
-                        <div>
-                            <Field 
-                                name="body" 
-                                component="textarea"
-                                className='text-area field'
-                            />
-                        </div>
-                    </div>
+                  
+                    <Field 
+                        name="body" 
+                        component={renderTextAreaField}
+                        label='Message'
+                        validate={required}
+                    />
+                       
 
                     <div className='form-buttons field' >
                        

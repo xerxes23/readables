@@ -19,7 +19,7 @@ const Categories = (props) => {
                 
                 {
                     categories.map( (category, i) => {
-                        return  <Link key={i} to={`category/${category.path}`} className="category-link" >
+                        return  <Link key={i} to={`/${category.path}`} className="category-link" >
                                     { toTitleCase(category.name)}
                                 </Link>
                     })

@@ -1,4 +1,8 @@
-import { SET_COMMENTS_TO_POST_ID, APPLY_VOTE_TO_COMMENT, ADD_COMMENT } from '../actions/comments'
+
+import { SET_COMMENTS_TO_POST_ID,
+         APPLY_VOTE_TO_COMMENT, 
+         ADD_COMMENT, 
+         UPDATE_COMMENT } from '../actions/comments'
 
 export const comments = (state = [], action) => {
     switch (action.type) {
@@ -42,6 +46,18 @@ export const comments = (state = [], action) => {
               [parentId]: state[parentId].concat(newComment)
             }
 
+
+        case UPDATE_COMMENT:
+            return {
+              ...state,
+              [action.parentId]: state[action.parentId].map(
+                content =>
+                  content.id === action.id
+                    ? { ...content, body: action.body, author: action.author }
+                    : content
+              )
+            }
+      
 
         default:
             return state

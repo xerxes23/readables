@@ -11,6 +11,54 @@ import { setPosts, postsAreLoading, addNewPost } from '../actions/posts'
 // Utils
 import * as ReadablesAPI from '../utils/ReadablesAPI'
 
+const required = value => (value ? undefined : 'Required')
+
+const renderSelectField = ({ input, label, type, meta: { touched, error }, children }) => (
+    <div >
+      <label className='label' >{label}</label>
+      <div className='field'>
+        <select {...input}>
+          {children}
+        </select>
+        {touched && error && <span className='error' >{error}</span>}
+      </div>
+    </div>
+)
+  
+const renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+  }) => (
+    <div>
+      <label className='label' >{label}</label>
+      <div>
+        <input className='field' {...input} placeholder={label} type={type} />
+        {touched &&
+          ((error && <span className='error' >{error}</span>) ||
+            (warning && <span className='warning' >{warning}</span>))}
+      </div>
+    </div>
+  )
+
+const renderTextAreaField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+  }) => (
+    <div>
+      <label className='label' >{label}</label>
+      <div>
+        <textarea className='text-area' {...input} placeholder={label} type={type} />
+        {touched &&
+          ((error && <span className='error' >{error}</span>) ||
+            (warning && <span className='warning' >{warning}</span>))}
+      </div>
+    </div>
+)
+
 class NewPostForm extends Component {
 
     onSubmit = (values) => {
@@ -41,63 +89,48 @@ class NewPostForm extends Component {
                 <h1> Add New Post </h1>
 
                 <form className='post-form' onSubmit={handleSubmit(this.onSubmit)}>
-                    <div  >
-                        <label className='label' >Post Title</label>
-                        <div>
-                            <Field
-                                name="title"
-                                component="input"
-                                type="text"
-                                placeholder=" Post Title"
-                                className='field'
-                            />
-                        </div>
-                    </div>
+                    
+                    <Field
+                        name="title"
+                        component={renderField}
+                        type="text"
+                        label='Post Title'
+                        validate={required}
+                    />
+                      
+    
+                    <Field
+                        name="author"
+                        component={renderField}
+                        type="text"
+                        label='Username'
+                        validate={required} 
+                    />
+                    
+                    
+                    
+                    <Field 
+                        name="username" 
+                        type="text" 
+                        component={renderSelectField} 
+                        label="Category"
+                        validate={required}
+                    >
+                        <option> Select One</option>    
+                        <option value="react">React</option>
+                        <option value="redux">Redux</option>
+                        <option value="udacity">Udacity</option>
+                    </Field>
 
-                    <div >
-                        <label className='label' >Username</label>
-                        <div>
-                            <Field
-                                name="author"
-                                component="input"
-                                type="text"
-                                placeholder=" Username"
-                                className='field'
-                            />
-                        </div>
-                    </div>
                     
-                    
-                    <div >
-                        <label className='label' >Category</label>
+                
+                    <Field 
+                        name="body" 
+                        component={renderTextAreaField} 
+                        label='Message'
+                        validate={required}
+                    />
                         
-                        <div>
-                            <Field 
-                                name="category" 
-                                component="select"
-                                className='field'
-                            >
-                                <option >Select one</option>    
-                                <option value="react">React</option>
-                                <option value="redux">Redux</option>
-                                <option value="udacity">Udacity</option>
-                            </Field>
-                        </div>
-                    </div>
-
-
-                    
-                    <div >
-                        <label className='label' >Message</label>
-                        <div>
-                            <Field 
-                                name="body" 
-                                component="textarea"
-                                className='text-area' 
-                            />
-                        </div>
-                    </div>
-
                     <div className='form-buttons field' >
                         
                         <Button positive type="submit" disabled={pristine || submitting}>

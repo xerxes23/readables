@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Loader } from 'semantic-ui-react'
 import Post from './Post'
 import { connect } from 'react-redux'
+import NotFound from '../components/NotFound'
 
 class PostView extends Component {
     
@@ -10,8 +11,8 @@ class PostView extends Component {
         
         const { posts, postId, history, comments } = this.props
         
-        let post = false
-    
+        let post = true
+        
         if (posts) {
           post = posts.find(post => post.id === postId)
         }
@@ -20,8 +21,12 @@ class PostView extends Component {
         return (
             <div className="" > 
 
+
                 {
-                    post ? <Post post={post} comments={comments} history={history} /> : <Loader active />
+                    post ? 
+                    <Post post={post} comments={comments} history={history} />
+                    :
+                    <Loader active />
                 }    
 
             </div>
@@ -39,4 +44,4 @@ const mapDispatchToProps = (dispatch, ownProps ) => ({
 })
 
 
-  export default connect(mapStateToProps, mapDispatchToProps)(PostView)
+export default connect(mapStateToProps, mapDispatchToProps)(PostView)

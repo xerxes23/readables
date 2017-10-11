@@ -185,6 +185,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center; }
+  .form-container .error {
+    margin-left: 10px;
+    color: red; }
   .form-container h1 {
     margin: 20px; }
   .form-container .post-form {

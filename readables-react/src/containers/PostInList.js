@@ -57,7 +57,7 @@ class PostInList extends Component {
 							<small>{showDate(timestamp)}</small>
 						</h3>
 					
-						<Link to={`/post/${id}`} className="title">{title}</Link> 
+						<Link to={`/${category}/${id}`} className="title">{title}</Link> 
 					
 						<div>
 						

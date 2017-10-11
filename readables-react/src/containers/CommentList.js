@@ -14,7 +14,7 @@ class CommentList extends Component {
 
     render() {
     
-        const { comments, commentSortMethod, updateCommentSortMethod, parentId } = this.props
+        const { comments, commentSortMethod, updateCommentSortMethod, parentId, commentToEdit } = this.props
 
         if (comments) {
             commentSortMethod === 'date' ? comments.sort(sortByDate) : comments.sort(sortByScore)
@@ -42,7 +42,12 @@ class CommentList extends Component {
                     
                     {   comments ?
                         comments.map( (comment, index) => ( 
-                            < Comment  key={index} comment={comment} />
+                            < Comment  
+                                key={index}
+                                comment={comment} 
+                                commentToEdit={commentToEdit} 
+                                parentId={parentId}
+                            />
                         )) : <div className='loader' > <Loader size='large' active /> </div>
                     }    
 
@@ -57,7 +62,8 @@ class CommentList extends Component {
 
 
 const mapStateToProps = (state, props) => ({
-    commentSortMethod: state.commentSortMethod
+    commentSortMethod: state.commentSortMethod,
+    commentToEdit: state.commentToEdit
 })
  
 const mapDispatchToProps = (dispatch, ownProps) => ({

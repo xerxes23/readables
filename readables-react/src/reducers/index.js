@@ -10,6 +10,7 @@ import { posts, postsAreLoading } from './posts'
 import { sortMethod } from './sortMethod'
 import { commentSortMethod } from './commentSortMethod'
 import { deletePostModal } from './deletePostModal'
+import { commentToEdit } from './commentToEdit'
 
 export default combineReducers({
     
@@ -21,5 +22,6 @@ export default combineReducers({
     postsAreLoading,
     categoriesAreLoading,
     deletePostModal,
+    commentToEdit,
     form: formReducer
 })
