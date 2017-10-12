@@ -1,18 +1,18 @@
 // Libs
-import React from 'react'
+import React from 'react';
 
 // Components
-import PostList from '../containers/PostList'
-import CategoryHeader from './CategoryHeader'
+import PostList from '../containers/PostList';
+import CategoryHeader from './CategoryHeader';
 
 
 const CategoryView = (props) => {
 
-    const { posts, categoryPath, history } = props
+    const { posts, categoryPath, history } = props;
 
     const filteredPosts = posts.filter( p => {
         return p.category === categoryPath
-    })
+    });
 
     return (
         <div className="" >
@@ -31,4 +31,4 @@ const CategoryView = (props) => {
     
 }
 
-export default CategoryView
+export default CategoryView;

@@ -1,14 +1,14 @@
 
 // Libs
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Utils
-import { toTitleCase } from '../utils/utils.js'
+import { toTitleCase } from '../utils/utils.js';
 
 const Categories = (props) => {
 
-    const { categories } = props
+    const { categories } = props;
 
     return (
         <div className="category-wrapper">
@@ -33,4 +33,4 @@ const Categories = (props) => {
 }
 
 
-export default Categories
+export default Categories;

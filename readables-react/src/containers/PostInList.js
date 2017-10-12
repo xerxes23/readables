@@ -61,7 +61,7 @@ class PostInList extends Component {
 					
 						<div>
 						
-							<Link to={`/category/${category}`}>
+							<Link to={`/${category}`}>
 								{category?
 									<Label className="category-tag" horizontal>{toTitleCase(category)}</Label>
 									: <Loader active />

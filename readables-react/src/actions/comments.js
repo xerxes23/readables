@@ -1,58 +1,46 @@
-export const APPLY_VOTE_TO_COMMENT = 'APPLY_VOTE_TO_COMMENT'
-export const SET_COMMENTS_TO_POST_ID = 'SET_COMMENTS_TO_POST_ID'
-export const UPDATE_COMMENT_SORT_METHOD = 'UPDATE_COMMENT_SORT_METHOD'
-export const ADD_COMMENT = 'ADD_COMMENT'
-export const CONTROL_EDIT_COMMENT_FORM = 'CONTROL_EDIT_COMMENT_FORM'
-export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+export const APPLY_VOTE_TO_COMMENT = 'APPLY_VOTE_TO_COMMENT';
+export const SET_COMMENTS_TO_POST_ID = 'SET_COMMENTS_TO_POST_ID';
+export const UPDATE_COMMENT_SORT_METHOD = 'UPDATE_COMMENT_SORT_METHOD';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const CONTROL_EDIT_COMMENT_FORM = 'CONTROL_EDIT_COMMENT_FORM';
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
 
-export function setPostComments(postId, comments) {
-    return {
-      type: SET_COMMENTS_TO_POST_ID,
-      postId,
-      comments
-    }
-}
+export const setPostComments = (postId, comments) => ({
+	type: SET_COMMENTS_TO_POST_ID,
+	postId,
+	comments
+});
 
 
-export function updateCommentSortMethod(method) {
-  return {
+export const updateCommentSortMethod = method => ({
     type: UPDATE_COMMENT_SORT_METHOD,
-    method
-  }
-}
+	method
+});
 
-export function applyVoteToComment(commentId, parentId, newValue) {
-  return {
+export const applyVoteToComment = (commentId, parentId, newValue) => ({
     type: APPLY_VOTE_TO_COMMENT,
     commentId,
     parentId,
-    newValue
-  }
-}
+	newValue
+});
 
-export function addNewComment(postId, comment) {
-  return {
+export const addNewComment = (postId, comment) => ({
     type: ADD_COMMENT,
     postId,
     comment
-  }
-}
+});
 
-export function controlEditCommentForm(name, value) {
-  return {
+export const controlEditCommentForm = (name, value) => ({
     type: CONTROL_EDIT_COMMENT_FORM,
     name,
     value
-  }
-}
+});
 
-export function updateComment(id, parentId, body, author) {
-  return {
-    type: UPDATE_COMMENT,
+export const updateComment = (id, parentId, body, author) => ({
+	type: UPDATE_COMMENT,
     parentId,
     id,
     body,
     author
-  }
-}
+});
