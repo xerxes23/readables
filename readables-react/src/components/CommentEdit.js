@@ -79,7 +79,7 @@ class CommentEdit extends Component {
 
     render() {
 
-        const {  handleSubmit, pristine, submitting } = this.props
+        const {  handleSubmit, pristine, submitting, stopEditingComment } = this.props
 
         return(
             <div className="comment-in-list">
@@ -108,7 +108,10 @@ class CommentEdit extends Component {
                             </Button>
             
                                 
-                            <button type="button" >
+                            <button 
+                                type="button" 
+                                onClick={stopEditingComment}
+                            >
                                 Cancel
                             </button>
                             
@@ -131,7 +134,7 @@ const mapStateToProps = (state, ownProps) => ({
 	
 	
 const mapDispatchToProps = (dispatch, ownProps)  => ({
-	updateComment: values => {
+	updateComment(values) {
         ReadablesAPI.updateCommentById(ownProps.comment.id, values.body, values.author)
             .then(() => {
                 dispatch(updateComment(ownProps.comment.id, 
@@ -141,7 +144,7 @@ const mapDispatchToProps = (dispatch, ownProps)  => ({
                 ))     
     })},
 
-    stopEditingComment: () => {
+    stopEditingComment() {
         dispatch(controlEditCommentForm('id', '0'))
     }
 })

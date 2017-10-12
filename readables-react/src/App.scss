@@ -257,6 +257,26 @@
     padding: 10px;
 }
 
+/* ################ Comment Edit Form ################ */
+.comment-edit-form {
+    width: 100%;
+    
+    .field {
+        margin: 10px;
+        width: 80%;
+        height: 30px; 
+        
+    }
+
+    .text-area {
+        margin: 10px;
+        width: 80%;
+        height: 30px;
+    }
+
+}
+
+
 /* ################ Post Form ################ */
 
 .form-container {

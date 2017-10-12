@@ -1,5 +1,5 @@
 // Libs
-import React, { Component } from 'react'
+import React from 'react'
 
 // Utils
 import { toTitleCase } from '../utils/utils.js'

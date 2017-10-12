@@ -139,14 +139,14 @@ const mapStateToProps = (state, ownProps) => ({
 
 
 const mapDispatchToProps = (dispatch, ownProps)  => ({
-    updatePost: values => {
+    updatePost(values) {
         ReadablesAPI.editPostById(ownProps.postId, values)
             .then(() => {
                 dispatch(updatePost(values))
                 ownProps.history.push('/')
          
     })},
-    getAllPosts: () => {
+    getAllPosts() {
         dispatch(postsAreLoading(true))
         ReadablesAPI.getAllPosts()
             .then(posts => {

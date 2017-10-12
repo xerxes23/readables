@@ -71,7 +71,7 @@ const mapStateToProps = (state, ownProps) => ({
   
   
 const mapDispatchToProps = (dispatch, ownProps) => ({
-        updateSortMethod: newSortMethod => {
+        updateSortMethod(newSortMethod) {
             dispatch(updateSortMethod(newSortMethod))
         }
     })

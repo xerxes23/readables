@@ -47,7 +47,7 @@ class Post extends Component {
 
                             <small>Category:</small>
                             <Label className="category-tag" horizontal> 
-                                <Link to={`/category/${category}`} > {toTitleCase(category)} </Link> 
+                                <Link to={`/${category}`} > {toTitleCase(category)} </Link> 
                             </Label>
                        
                         </h3>
@@ -97,16 +97,17 @@ const mapStateToProps = (state, ownProps) => ({
   
   
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    setPostComments: () => {
+    
+    setPostComments() {
             ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
             dispatch(setPostComments(ownProps.post.id, comments))
     })},
     
-    displayDeleteModal: bool => {
+    displayDeleteModal(bool) {
         dispatch(displayDeleteModal(bool))
     },
 
-    setPostIdToDeleteModal: postId => {
+    setPostIdToDeleteModal(postId) {
         dispatch(setPostIdToDeleteModal(postId))
     }
 })

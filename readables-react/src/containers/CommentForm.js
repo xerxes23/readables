@@ -91,7 +91,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps)  => ({
-    addNewComment: values => {
+    addNewComment(values) {
         ReadablesAPI.addComment(values)
             .then(() => {
                 dispatch(addNewComment(ownProps.parentId, values))

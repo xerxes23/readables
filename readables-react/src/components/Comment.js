@@ -18,7 +18,7 @@ class Comment extends Component {
 
 	render() {
 
-		const { comment, commentToEdit, handleSubmit, pristine, submitting, startEditingThisComment } = this.props
+		const { comment, commentToEdit, startEditingThisComment } = this.props
 		const { voteScore, timestamp, body, author } = this.props.comment
 
 		return (

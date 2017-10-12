@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PostList from '../containers/PostList'
 import Categories from './Categories'
 

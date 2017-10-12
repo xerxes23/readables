@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Button, TextArea, Form, Input, Loader } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react'
 import { sortByDate, sortByScore } from '../utils/utils'
 import { connect } from 'react-redux'
 
@@ -21,9 +21,8 @@ class CommentList extends Component {
         }
 
         const commentNumber = comments? comments.length === 1? `1 comment`: `${comments.length} comments`:'loading'
-        
-       
 
+       
         return (
             <div className="container" >
                
@@ -67,7 +66,7 @@ const mapStateToProps = (state, props) => ({
 })
  
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    updateCommentSortMethod: newSortMethod => {
+    updateCommentSortMethod(newSortMethod) {
         dispatch(updateCommentSortMethod(newSortMethod))
     }
 })

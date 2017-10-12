@@ -157,14 +157,14 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps)  => ({
-    addNewPost: values => {
+    addNewPost(values) {
         ReadablesAPI.addPost(values)
             .then(() => {
                 dispatch(addNewPost(values))
                 ownProps.history.push('/')
          
     })},
-    getAllPosts: () => {
+    getAllPosts() {
         dispatch(postsAreLoading(true))
         ReadablesAPI.getAllPosts()
             .then(posts => {

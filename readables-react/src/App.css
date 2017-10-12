@@ -180,6 +180,18 @@
   width: 20px;
   padding: 10px; }
 
+/* ################ Comment Edit Form ################ */
+.comment-edit-form {
+  width: 100%; }
+  .comment-edit-form .field {
+    margin: 10px;
+    width: 80%;
+    height: 30px; }
+  .comment-edit-form .text-area {
+    margin: 10px;
+    width: 80%;
+    height: 30px; }
+
 /* ################ Post Form ################ */
 .form-container {
   display: flex;

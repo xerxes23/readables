@@ -108,32 +108,28 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps (state, props) {
-  return {
+const mapStateToProps = (state, props) => ({
     categories: state.categories,
     posts: objectToArray(state.posts),
     loadingCategories: state.categoriesAreLoading,
     loadingPosts: state.loadingPosts
-  }
-}
+})
 
-function mapDispatchToProps (dispatch) {
-  return {
-    getAllCategories: () => {
+const mapDispatchToProps  = (dispatch) => ({
+    getAllCategories() {
       dispatch(categoriesAreLoading(true))
       ReadablesAPI.getAllCategories().then(categories => {
         dispatch(setCategories(categories))
         dispatch(categoriesAreLoading(false))
       })
     },
-    getAllPosts: () => {
+    getAllPosts() {
       dispatch(postsAreLoading(true))
       ReadablesAPI.getAllPosts().then(posts => {
         dispatch(setPosts(posts))
         dispatch(postsAreLoading(false))
       })
     }
-  }
-}
+})
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

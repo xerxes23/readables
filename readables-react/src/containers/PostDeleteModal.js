@@ -68,10 +68,10 @@ const mapStateToProps = (state, props) => ({
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-        displayDeleteModal: (bool) => {
+        displayDeleteModal(bool) {
             dispatch(displayDeleteModal(bool))
         },
-        deletePost: (postIdToDelete) => {
+        deletePost(postIdToDelete) {
             ReadablesAPI.deletePostById(postIdToDelete).then(() => dispatch(deletePost(postIdToDelete)))
             ownProps.history.push('/')
         }

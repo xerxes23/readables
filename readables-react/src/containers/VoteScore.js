@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => ({
   
   
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	applyVote: (newValue, diff) => {
+	applyVote(newValue, diff) {
 		ReadablesAPI.votePost(ownProps.id, diff)
 		dispatch(applyVote(ownProps.id, newValue + diff))
 	}

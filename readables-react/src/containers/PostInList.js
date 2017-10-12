@@ -113,14 +113,14 @@ const mapStateToProps = (state, ownProps) => ({
 })
   
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	setPostComments: () => {
+	setPostComments() {
 			ReadablesAPI.getCommentsByPostId(ownProps.post.id).then(comments => {
 			dispatch(setPostComments(ownProps.post.id, comments))
 	})},
-	displayDeleteModal: bool => {
+	displayDeleteModal(bool) {
 		dispatch(displayDeleteModal(bool))
 	},
-	setPostIdToDeleteModal: postId => {
+	setPostIdToDeleteModal(postId) {
 		dispatch(setPostIdToDeleteModal(postId))
 	}
 })
