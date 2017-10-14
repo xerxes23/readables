@@ -28,7 +28,7 @@ class PostInList extends Component {
 
 		const { voteScore, id, author, timestamp, title, category } = this.props.post
 
-		const { comments, history, deletePostModal } = this.props
+		const { comments, history, deletePostModal, setPostIdToDeleteModal, displayDeleteModal } = this.props
 
 		let postComments = false
 		if (comments) {
@@ -90,8 +90,8 @@ class PostInList extends Component {
 						negative 
 						className="delete-button"
 						onClick={() => {
-                			this.props.setPostIdToDeleteModal(id)
-                			this.props.displayDeleteModal(true)
+                			setPostIdToDeleteModal(id)
+                			displayDeleteModal(true)
               			}}
 					>
 
